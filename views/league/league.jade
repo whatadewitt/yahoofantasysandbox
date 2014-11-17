@@ -1,0 +1,20 @@
+extends ../console
+
+block header
+  p
+    | With the League API, you can obtain the league related information, like the league name, the number of teams, the draft status, et cetera. Leagues only exist in the context of a particular Game, although you can request a League Resource as the base of your URI by using the global league_key.
+  p
+    | A particular user can only retrieve data for private leagues of which they are a member, or for public leagues.
+  p
+    | maps to http://fantasysports.yahooapis.com/fantasy/v2/league/{league_key}/{sub_resource}
+
+block inputs
+  .row.form-group
+    .col-sm-2
+      label league_key
+    .col-sm-4
+      input#league_key.form-control(type="text", placeholder="eg. 328.l.34014")
+    .col-sm-6.desc
+      p
+        | League key format: {game_key}.l.{league_id}
+  block subinputs

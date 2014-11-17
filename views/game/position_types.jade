@@ -1,0 +1,18 @@
+extends game
+
+block description
+  p
+    | Subresource to provide a detailed description of all player position types for the game.
+
+block code
+  | &nbsp;
+  | yf.game.position_types(
+  |   game_key,
+  |   function(data) {
+  |     // do your thing
+  |   }
+
+block sample
+  pre
+    code.json
+      !{JSON.stringify({"game_key":"331","game_id":"331","name":"Football","code":"nfl","type":"full","url":"http://football.fantasysports.yahoo.com/f1","season":"2014","position_types":[{"type":"O","display_name":"Offense"},{"type":"K","display_name":"Kickers"},{"type":"DT","display_name":"Defense/Special Teams"},{"type":"DP","display_name":"Defensive Players"}]}, null, 2)};

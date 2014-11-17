@@ -1,0 +1,28 @@
+extends user
+
+block description
+  p
+    | Fetch teams owned by the user in one or more games. The teams will be scoped to the user. This will throw an error if any of the specified games do not support team sub-resources.
+
+block code
+  | &nbsp;
+  | yf.user.teams(
+  |   game_key,
+  |   function(data) {
+  |     // do your thing
+  |   }
+
+block inputs
+  .row.form-group
+    .col-sm-2
+      label game_key
+    .col-sm-4
+      input#game_key.form-control(type="text", placeholder="eg. 328")
+    .col-sm-6.desc
+      p
+        | Game key examples: 'mlb', 'nfl', 328 (2014 MLB season), 242 (2010 NFL season). For the purposes of this demo, you can enter a comma separated list of league keys for the array.
+
+block sample
+  pre
+    code.json
+      !{JSON.stringify({"guid":"RYWP7M53IC626MGOX36ZWCM4FA","teams":[{"game_key":"328","game_id":"328","name":"Baseball","code":"mlb","type":"full","url":"http://baseball.fantasysports.yahoo.com/b1","season":"2014","teams":[{"team_key":"328.l.24281.t.7","team_id":"7","name":"ChicksDigTheLongBall","is_owned_by_current_login":1,"url":"http://baseball.fantasysports.yahoo.com/b1/24281/7","team_logo":"https://i.imgur-ysports.com/PhEXA9Ry.jpg","waiver_priority":6,"number_of_moves":"18","number_of_trades":0,"managers":[{"manager_id":"7","nickname":"dewberry","guid":"RYWP7M53IC626MGOX36ZWCM4FA","is_current_login":"1","email":"dewey@whatadewitt.com","image_url":"https://socialprofiles.zenfs.com/images/8ed931b36884df369fae061f758e1c43_64.jpg"}]},{"team_key":"328.l.34014.t.1","team_id":"1","name":"ChicksDigTheLongBall","is_owned_by_current_login":1,"url":"http://baseball.fantasysports.yahoo.com/b1/34014/1","team_logo":"http://l.yimg.com/dh/ap/fantasy/img/mlb/icon_6_lg.gif","waiver_priority":4,"number_of_moves":"19","number_of_trades":0,"clinched_playoffs":1,"managers":[{"manager_id":"1","nickname":"dewberry","guid":"RYWP7M53IC626MGOX36ZWCM4FA","is_commissioner":"1","is_current_login":"1","email":"dewey@whatadewitt.com","image_url":"https://socialprofiles.zenfs.com/images/8ed931b36884df369fae061f758e1c43_64.jpg"}]}]},{"game_key":"341","game_id":"341","name":"Hockey","code":"nhl","type":"full","url":"http://hockey.fantasysports.yahoo.com/hockey","season":"2014","teams":[{"team_key":"341.l.21063.t.1","team_id":"1","name":"Neal in the Staal","is_owned_by_current_login":1,"url":"http://hockey.fantasysports.yahoo.com/hockey/21063/1","team_logo":"https://i.imgur-ysports.com/PhEXA9Ry.jpg","waiver_priority":9,"number_of_moves":"4","number_of_trades":0,"managers":[{"manager_id":"1","nickname":"dewberry","guid":"RYWP7M53IC626MGOX36ZWCM4FA","is_commissioner":"1","is_current_login":"1","email":"dewey@whatadewitt.com","image_url":"https://socialprofiles.zenfs.com/images/8ed931b36884df369fae061f758e1c43_64.jpg"}]}]}]}, null, 2)};

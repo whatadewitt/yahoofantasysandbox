@@ -1,0 +1,6 @@
+mixin input(name, ex)
+  .row.form-group
+    .col-sm-2
+      label #{name}
+    .col-sm-4
+      input.form-control(id="#{name}", type="text", placeholder="eg. #{ex}")

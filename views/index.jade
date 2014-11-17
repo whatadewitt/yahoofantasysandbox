@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  +nav
+
+  .container.head.section
+    h1 Yahoo! Fantasy API Node Module
+
+    p
+      | This is a node module created to wrap the Yahoo! Fantasy Sports API (<a href="https://developer.yahoo.com/fantasysports/guide/index.html">link</a>). At the moment, not all subresources are available, nor are any of the 'collection' elements. I do hope to add them, and they have been added to the code, but as of now this project is very much in an open beta phase.
+    p
+      | The API is designed to act as a helper for those interacting with the Y! Fantasy API. The goal is for ease of use for the user, both in terms of querying endpoints and parsing responses. I've noticed that in working with the API, the data is not always the easiest to understand, so hopefully what I have created here will help people out.
+
+    h2 Installation
+
+    p
+      | You can install the module via npm by running:
+    pre
+      code $ npm install yahoo-fantasy
+
+    h2 Usage Notes
+
+    p
+      | The token from Yahoo! lasts for only an hour, so if you are kicking around this site for more than an hour, you'll have to re-auth or you'll run into errors with your user account no longer being correctly authorized. I am workng on a fix for this for this site specifically soon, and hopefully will have a better way to do it for anyone who wants to use this module.
+    p
+      | I've created a customized version of the <a href="https://github.com/whatadewitt/passport-yahoo-oauth">Passport Strategy for Yahoo! OAuth</a> to help me when I developed this module. It's a fork of the strategy on the PassportJS homepage, which simply fixed a couple of issues. It would appear that the original creator is no longer supporting the strategy, and I may have missed some things, but it has worked as much as I've needed it. Please let me know if you have any questions about it.
+
+    h2 Licence
+    p
+      | This module is available under the <a href="http://opensource.org/licenses/MIT">MIT Licence</a>
+
+    h2 Bugs &amp; Issues
+    p
+      | This project is very much still a work in progress, please report any issues via the [GitHub issues page](https://github.com/whatadewitt/yfsapi/issues).
+
+  .dark.section
+    .container
+      h2 Changelog
+
+      h4 0.1
+      ul
+        li
+          | Initial release.
+

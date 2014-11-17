@@ -1,0 +1,176 @@
+mixin nav
+  nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+    .container
+      .navbar-header
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href='/')
+          i.fa.fa-trophy
+          span Y! Fantasy API
+      #navbar.navbar-collapse.collapse
+        .navbar-right
+          ul.nav.navbar-nav
+              if null == user
+                li
+                  a.btn.login-btn(href="/auth/yahoo", title="Login with Yahoo") Login with Y!
+              else
+                li.dropdown
+                  a.user.clearfix.dropdown-toggle(href='#', data-toggle='dropdown')
+                    .name #{user.name}
+                    .avatar
+                      img(src="#{user.avatar}")
+                  ul.dropdown-menu(role='menu')
+                    li
+                      a(href='/logout') Logout
+        ul.nav.navbar-nav
+          li(class=activeClass == 'home' ? 'active' : '')
+            a(href='/') Home
+          li.dropdown(class=data.resource == 'game' ? 'active' : '')
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | Game
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li.dropdown-header Game Resource
+              li
+                a(href='/resource/game/meta') Meta
+              li
+                a(href='/resource/game/leagues') Leagues
+              li
+                a(href='/resource/game/players') Players
+              li
+                a(href='/resource/game/game_weeks') Game Weeks
+              li
+                a(href='/resource/game/stat_categories') Stat Categories
+              li
+                a(href='/resource/game/position_types') Position Types
+              li
+                a(href='/resource/game/roster_positions') Roster Positions
+              //- li.divider
+              //- li.dropdown-header Games Collection
+              //- li
+                a(href='/collection/games/fetch') Games
+              //- li
+                a(href='/collection/games/user') User
+              //- li
+                a(href='/collection/games/fetchUser') User Games
+          li.dropdown(class=data.resource == 'league' ? 'active' : '')
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | League
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li.dropdown-header League Resource
+              li
+                a(href='/resource/league/meta') Meta
+              li
+                a(href='/resource/league/settings') Settings
+              li
+                a(href='/resource/league/standings') Standings
+              //- li
+                a(href='/resource/league/scoreboard') Scoreboard
+              li
+                a(href='/resource/league/teams') Teams
+              //- li
+                a(href='/resource/league/players') Players
+              li
+                a(href='/resource/league/draft_results') Draft Results
+              li
+                a(href='/resource/league/transactions') Transactions
+              //- li.divider
+              //- li.dropdown-header Leagues Collection
+              //- li
+              //-   a(href='/collection/leagues/fetch') Leagues
+          li.dropdown(class=data.resource == 'player' ? 'active' : '')
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | Player
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li.dropdown-header Player Resource
+              li
+                a(href='/resource/player/meta') Meta
+              li
+                a(href='/resource/player/stats') Stats
+              li
+                a(href='/resource/player/ownership') Ownership
+              li
+                a(href='/resource/player/percent_owned') Percent Owned
+              li
+                a(href='/resource/player/draft_analysis') Draft Analysis
+              //- li.divider
+              //- li.dropdown-header Players Collection
+              //- li
+              //-   a(href='/collection/players/fetch') Players
+              //- li
+              //-   a(href='/collection/players/leaguFetch') League Players
+              //- li
+              //-   a(href='/collection/players/teamFetch') Team Players
+          li.dropdown(class=data.resource == 'roster' ? 'active' : '')
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | Roster
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li.dropdown-header Roster Resource
+              li
+                a(href='/resource/roster/players') Players
+          li.dropdown(class=data.resource == 'team' ? 'active' : '')
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | Team
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li.dropdown-header Team Resource
+              li
+                a(href='/resource/team/meta') Meta
+              li
+                a(href='/resource/team/stats') Stats
+              li
+                a(href='/resource/team/standings') Standings
+              li
+                a(href='/resource/team/roster') Roster
+              li
+                a(href='/resource/team/draft_results') Draft Results
+              //- li
+                a(href='/resource/team/matchups') Matchups
+              //- li.divider
+              //- li.dropdown-header Teams Collection
+              //- li
+              //-   a(href='/collection/team/fetch') Teams
+              //- li
+              //-   a(href='/collection/team/leagueFetch') League Teams
+              //- li
+              //-   a(href='/collection/team/userFetch') User Teams
+              //- li
+              //-   a(href='/collection/team/gameFetch') Game Teams
+          li.dropdown(class=data.resource == 'transaction' ? 'active' : '')
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | Transaction
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li.dropdown-header Transaction Resource
+              li
+                a(href='/resource/transaction/meta') Meta
+              li
+                a(href='/resource/transaction/players') Players
+              //- li.divider
+              //- li.dropdown-header Transactions Collection
+              //- li
+              //-   a(href='/collection/transaction/meta') Transactions
+              //- li
+              //-   a(href='/collection/transaction/meta') Leagues Transactions
+          li.dropdown(class=data.resource == 'user' ? 'active' : '')
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | User
+              span.caret
+            ul.dropdown-menu(role='menu')
+              li.dropdown-header User Resource
+              li
+                a(href='/resource/user/games') Games
+              li
+                a(href='/resource/user/game_leagues') Leagues
+              li
+                a(href='/resource/user/game_teams') Teams
+              //- li.divider
+              //- li.dropdown-header Users Collection
+              //- li
+              //-   a(href='/collection/user/users') Users

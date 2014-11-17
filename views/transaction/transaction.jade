@@ -1,0 +1,32 @@
+extends ../console
+
+block header
+  p
+    | With the Transaction API, you can obtain information about transactions (adds, drops, trades, and league settings changes) performed on a league. A transaction is identified in the context of a particular league, although you can request a particular Transaction Resource as the base of your URI by using the global transaction_key.
+  p
+    | maps to http://fantasysports.yahooapis.com/fantasy/v2/transaction/{transaction_key}/{sub_resource}
+
+block description
+  p
+    | Includes transaction key, id, type, timestamp, status, and players. For the purpose of this API, the players subresource is always called so players always come back by default
+  p
+    | Keep in mind, if you don't have the transaction_key for a waiver claim or pending trade, the only way to discover these transactions is to filter the league <a href="/collection/transactions/leagueFetch">Transactions collection</a> by a particular type (waiver or pending_trade) and by a particular team_key. Pending transactions will not show up if you simply ask for all of the transactions in the league, because they can only be seen by certain teams.
+  p
+    | At the moment, only "transactions" types are supported. Waiver claims and pending trades will soon be added.
+  p
+    | In the future, I hope to support more than just the GET requests, but for the time being, they should be fine.
+
+block inputs
+  .row.form-group
+    .col-sm-2
+      label transaction_key
+    .col-sm-4
+      input#transaction_key.form-control(type="text", placeholder="eg. 328.l.34014.tr.237")
+    .col-sm-6.desc
+      p
+        | Transaction key format: {game_key}.l.{league_id}.tr.{transaction_id}
+
+block sample
+  pre
+    code.json
+      !{JSON.stringify({"transaction_key":"328.l.34014.tr.237","transaction_id":"237","type":"add/drop","status":"successful","timestamp":"1406292531","players":[{"player_key":"328.p.9147","player_id":"9147","name":{"full":"Stephen Vogt","first":"Stephen","last":"Vogt","ascii_first":"Stephen","ascii_last":"Vogt"},"editorial_team_abbr":"Oak","display_position":"C,1B,OF","position_type":"B","transaction_data":{"type":"add","source_type":"freeagents","destination_type":"team","destination_team_key":"328.l.34014.t.1","destination_team_name":"ChicksDigTheLongBall"}},{"player_key":"328.p.7865","player_id":"7865","name":{"full":"Miguel Montero","first":"Miguel","last":"Montero","ascii_first":"Miguel","ascii_last":"Montero"},"editorial_team_abbr":"Ari","display_position":"C","position_type":"B","transaction_data":{"type":"drop","source_type":"team","source_team_key":"328.l.34014.t.1","source_team_name":"ChicksDigTheLongBall","destination_type":"waivers"}}]}, null, 2)};

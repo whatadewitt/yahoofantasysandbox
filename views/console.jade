@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  +nav
+
+  script.
+    var resource = '#{data.resource}';
+    var subresource = '#{data.subresource}';
+
+  .container.head.section
+    h1 #{data.resource}
+    h2 #{data.subresource}
+    block header
+
+  .dark.section
+    .container
+      h2 How To Use
+      .row
+        .col-sm-6
+          block description
+        .col-sm-6
+          pre
+            code.javascript
+              | var YahooFantasy = require('yahoo-fantasy');
+              | var yf = new YahooFantasy(
+              |   Y!APPLICATION_KEY,
+              |   Y!APPLICATION_SECRET
+              | );
+              | &nbsp;
+              | yf.setUserToken(
+              |   Y!CLIENT_TOKEN,
+              |   Y!CLIENT_SECRET
+              | );
+              | &nbsp;
+              block code
+
+  .try.section
+    .container
+      h2 Give it a try
+      block inputs
+
+      .row.form-group
+        .col-sm-6
+          button.btn.pull-right Submit
+        .col-sm-6
+          .loading
+            i.fa.fa-spinner.fa-spin
+
+  .data-block.section.container
+    h2 Sample Output
+    .row
+      .col-sm-10.col-sm-offset-1
+        block sample
+

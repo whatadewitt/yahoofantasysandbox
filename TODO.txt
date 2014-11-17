@@ -1,0 +1,9 @@
+todo:
+
+_.chain
+
+collections
+
+rename functions to "mapTeam" from "teamMap" (as examples)
+
+error handling

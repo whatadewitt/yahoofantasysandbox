@@ -1,0 +1,32 @@
+extends game
+
+block description
+  p
+    | You can use this subresource to query game eligible players.
+  p
+    | You can specify either a single player id, or an array of player id's to return multiple leagues from the same game.
+
+block code
+  | &nbsp;
+  | yf.game.players(
+  |   game_key,
+  |   player_key(s),
+  |   function(data) {
+  |     // do your thing
+  |   }
+
+
+block subinputs
+  .row.form-group
+    .col-sm-2
+      label player_key
+    .col-sm-4
+      input#player_key.form-control(type="text", placeholder="eg. 328.p.6619, 328.p.8172")
+    .col-sm-6.desc
+      p
+        | Player key format: {game_key}.p.{player_id}. For the purposes of this demo, you can enter a comma separated list of player keys for the array.
+
+block sample
+  pre
+    code.json
+      !{JSON.stringify({"game_key":"328","game_id":"328","name":"Baseball","code":"mlb","type":"full","url":"http://baseball.fantasysports.yahoo.com/b1","season":"2014","players":[{"player_key":"328.p.8861","player_id":"8861","name":{"full":"Mike Trout","first":"Mike","last":"Trout","ascii_first":"Mike","ascii_last":"Trout"},"editorial_player_key":"mlb.p.8861","editorial_team_key":"mlb.t.3","editorial_team_full_name":"Los Angeles Angels","editorial_team_abbr":"LAA","uniform_number":"27","display_position":"OF","headshot":"http://l.yimg.com/iu/api/res/1.2/mf1klpjytL0QlhrnXzz3PA--/YXBwaWQ9eXZpZGVvO…g--/http://l.yimg.com/j/assets/i/us/sp/v/mlb/players_l/20130405/8861.1.jpg","is_undroppable":"0","position_type":"B","eligible_positions":["CF","DH","LF","OF"]}]}, null, 2)};

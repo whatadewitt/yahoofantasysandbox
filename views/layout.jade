@@ -1,0 +1,63 @@
+doctype
+//if lt IE 7
+  <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+//if IE 7
+  <html class="no-js lt-ie9 lt-ie8">
+//if IE 8
+  <html class="no-js lt-ie9">
+//[if gt IE 8]><!
+html.no-js
+  include nav
+
+  //<![endif]
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title Yahoo! Fantasy API Node Module
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/monokai.min.css")
+    link(href='http://fonts.googleapis.com/css?family=Ubuntu:400,700', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+    script.
+      window.jQuery || document.write('<script src="javascripts/vendor/jquery-1.10.2.min.js"><\/script>')
+      $('.team').on('click', function(e) {
+        e.preventDefault();
+        $(this).children('.players').slideToggle();
+      });
+
+    body(role="document", class="#{bodyClass}")
+      a(href="https://github.com/whatadewitt/yfsapi")
+        img(style="position: absolute; top: 50px; right: 0; border: 0;", src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67", alt="Fork me on GitHub", data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png")
+      block content
+
+      footer
+        .container
+          ul.social.list-inline
+            li
+              a.social-link(href="http://www.whatadewitt.ca", title="My homepage")
+                i.fa.fa-home
+            li
+              a.social-link(href="http://www.twitter.com/whatadewitt", title="Follow me on Twitter")
+                i.fa.fa-twitter
+            li
+              a.social-link(href="http://www.github.com/whatadewitt", title="Fork me on GitHub")
+                i.fa.fa-github
+
+    script(src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script(src='/javascripts/jquery.scrollTo.min.js')
+    script(src='/javascripts/site.js')
+
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-56805480-1', 'auto');
+      ga('send', 'pageview');
+

@@ -1,0 +1,18 @@
+extends game
+
+block description
+  p
+    | Subresource to provide metadata about a queried game, including game key, code name, url, type and season.
+
+block code
+  | &nbsp;
+  | yf.game.meta(
+  |   game_key,
+  |   function(data) {
+  |     // do your thing
+  |   }
+
+block sample
+  pre
+    code.json
+      !{JSON.stringify({game_key:'328',game_id:'328',name:'Baseball',code:'mlb',type:'full',url:'http://baseball.fantasysports.yahoo.com/b1',season:'2014'}, null, 2)};
