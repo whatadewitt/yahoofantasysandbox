@@ -17,7 +17,7 @@
     "passport-yahoo": "~0.3.0",
     "passport-yahoo-oauth": "~0.1.2",
     "q": "^1.0.1",
-    "yahoo-fantasy": "^0.1.0"
+    "yahoo-fantasy": "^0.1.1"
   },
   "subdomain": "fbbl",
   "engines": {

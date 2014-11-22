@@ -16,6 +16,7 @@ var express = require('express')
   , path = require('path')
   , passport = require('passport')
   , YahooStrategy = require('passport-yahoo-oauth').Strategy
+  , YahooFantasy = require('yahoo-fantasy')
   , APP_KEY = process.env.APP_KEY || require('./conf.js').APP_KEY
   , APP_SECRET = process.env.APP_SECRET || require('./conf.js').APP_SECRET;
 
@@ -53,22 +54,8 @@ passport.use(new YahooStrategy({
       sessionHandle: profile.oauth_session_handle
     };
 
-    process.nextTick(function() {
-        // usersController.findOrCreate(userObj, function(err, user) {
-        //     if (err) {
-        //         return done(err);
-        //     }
-
-        //     return done(null, user);
-        // });
-        // });
-
-      // To keep the example simple, the user's Yahoo profile is returned to
-      // represent the logged-in user.  In a typical application, you would want
-      // to associate the Yahoo account with a user record in your database,
-      // and return that user instead.
-      return done(null, userObj);
-    });
+    return done(null, userObj);
+    // for luke... later...
     // User.findOne({ user_id: profile.id }, function(err, u) {
     //   console.log(u);
     //   if (err) { return done(err); }
@@ -80,9 +67,6 @@ passport.use(new YahooStrategy({
     //   user.token_secret = tokenSecret;
     //   user.name = profile.displayName;
     //   user.nickname = profile._json.profile.nickname;
-
-    //   console.log(user);
-    //   return done(null, user);
 
     //   // user.save(function(e, u) {
     //   //   if (e) return done(e);
@@ -115,10 +99,10 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.get('/resource/:resource/:subresource', routes.console);
-app.get('/collection/:resource/:subresource', routes.console);
-app.get('/data/:resource/:subresource', routes.getData);
+app.get('/', checkAuth, routes.index);
+app.get('/resource/:resource/:subresource', checkAuth, routes.console);
+app.get('/collection/:resource/:subresource', checkAuth, routes.console);
+app.get('/data/:resource/:subresource', setAppToken, routes.getData);
 
 app.get('/auth/yahoo',
   passport.authenticate('yahoo', { failureRedirect: '/login' }),
@@ -142,7 +126,26 @@ http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
-// function ensureAuthenticated(req, res, next) {
-//   if (req.isAuthenticated()) { return next(); }
-//   res.redirect('/login');
-// }
+function checkAuth(req, res, next) {
+  var userObj = {};
+
+  if (req.isAuthenticated()) {
+    userObj = {
+      name: req.user.name,
+      avatar: req.user.avatar
+    };
+  } else {
+    userObj = null;
+  }
+
+  next();
+}
+
+function setAppToken(req, res, next) {
+  req.yahoo = {
+    key: APP_KEY,
+    secret: APP_SECRET
+  };
+
+  next();
+}

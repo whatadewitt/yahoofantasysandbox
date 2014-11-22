@@ -1,26 +1,15 @@
-var app = require('../app.js');
 var YahooFantasy = require('yahoo-fantasy');
 
 exports.index = function(req, res) {
   req.session.redirect = '/';
-  var userObj = null;
-
-  if ( req.isAuthenticated() ) {
-    userObj = {};
-    userObj = {
-      name: req.user.name,
-      avatar: req.user.avatar
-    };
-  }
 
   res.render('index', {
     activeClass: 'home',
     data: {
       resource: ''
     },
-    user: userObj
+    user: req.userObj
   });
-  // });
 };
 
 exports.console = function(req, res) {
@@ -31,18 +20,8 @@ exports.console = function(req, res) {
 
   req.session.redirect = req.url;
 
-  var userObj = null;
-
-  if ( req.isAuthenticated() ) {
-    userObj = {};
-    userObj = {
-      name: req.user.name,
-      avatar: req.user.avatar
-    };
-  }
-
   res.render(view, {
-    user: userObj,
+    user: req.userObj,
     data: {
       resource: resource,
       subresource: subresource
@@ -51,7 +30,8 @@ exports.console = function(req, res) {
 };
 
 exports.getData = function(req, res) {
-  var yf = new YahooFantasy(app.APP_KEY, app.APP_SECRET),
+  var func;
+  var yf = new YahooFantasy(req.yahoo.key, req.yahoo.secret),
     resource = req.params.resource,
     subresource = req.params.subresource,
     query = req.query;
@@ -62,7 +42,7 @@ exports.getData = function(req, res) {
     yf.setUserToken(null, null);
   }
 
-  var func = yf[resource][subresource];
+  func = yf[resource][subresource];
 
   Object.map = function(obj) {
     var key, arr = [];
@@ -75,8 +55,6 @@ exports.getData = function(req, res) {
   var args = Object.map(query);
 
   var callback = function callback(data) {
-    // console.log(data);
-    console.log(data);
     res.json(data);
   }
 
