@@ -15,16 +15,11 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , passport = require('passport')
-  , YahooStrategy = require('passport-yahoo-oauth').Strategy
+  , YahooStrategy = require('./passport-yahoo-oauth').Strategy
   , YahooFantasy = require('yahoo-fantasy')
   , APP_KEY = process.env.APP_KEY || require('./conf.js').APP_KEY
-  , APP_SECRET = process.env.APP_SECRET || require('./conf.js').APP_SECRET;
-
-// bob dole don't like this...
-exports.APP_KEY = APP_KEY;
-exports.APP_SECRET = APP_SECRET;
-
-var routes = require('./routes');
+  , APP_SECRET = process.env.APP_SECRET || require('./conf.js').APP_SECRET
+  , routes = require('./routes');
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -127,7 +122,7 @@ http.createServer(app).listen(app.get('port'), function(){
 });
 
 function checkAuth(req, res, next) {
-  var userObj = {};
+  var userObj;
 
   if (req.isAuthenticated()) {
     userObj = {
@@ -137,6 +132,8 @@ function checkAuth(req, res, next) {
   } else {
     userObj = null;
   }
+
+  req.userObj = userObj;
 
   next();
 }
