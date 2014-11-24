@@ -1,6 +1,6 @@
 {
-  "name": "freddybeachfb",
-  "version": "0.2.0-3",
+  "name": "fantasysandbox",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "start": "node app"
@@ -16,7 +16,7 @@
     "passport": "~0.1.17",
     "https-passport-yahoo-oauth": "~0.1.2",
     "q": "^1.0.1",
-    "yahoo-fantasy": "^0.1.1"
+    "yahoo-fantasy": "^0.1.2"
   },
   "subdomain": "fbbl",
   "engines": {
