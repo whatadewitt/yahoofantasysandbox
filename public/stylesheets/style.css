@@ -163,6 +163,11 @@ p {
   font-size: 1.1em;
 }
 
+p.note {
+  font-size: .8em;
+  font-style: italic;
+}
+
 .dark {
   background: #34193f;
   color: white;
@@ -237,4 +242,33 @@ footer {
 .social .social-link:hover {
   background: #703688;
   color: white;
+}
+
+.checkbox-group label {
+  text-align: left;
+}
+
+.checkbox-group label input {
+  margin-right: 5px;
+}
+
+.try .nav {
+  border-bottom: 1px solid #34193f;
+}
+
+.try .nav li > a:hover {
+  border-bottom: 1px solid #34193f;
+}
+
+.try .nav li.active > a {
+  background: #34193f;
+  color: white;
+}
+
+.tab-pane {
+  padding: 20px 0;
+}
+
+.spacing {
+  margin-top: 20px;
 }

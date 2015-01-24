@@ -1,4 +1,5 @@
 var YahooFantasy = require('yahoo-fantasy');
+var _ = require('lodash');
 
 exports.index = function(req, res) {
   req.session.redirect = '/';
@@ -58,18 +59,61 @@ exports.getData = function(req, res) {
     res.json(data);
   }
 
-  if ( 1 == args.length ) {
+  // if ( _.has(query, 'subresources') && _.has(query, 'filters') ) {
+  //   // collection with subresources and filters
+  //   var subresources = args[1].split(',');
+  //   var filters = JSON.parse(args[0]);
+
+  //   func(
+  //     subresources,
+  //     filters,
+  //     callback
+  //     );
+  if ( _.has(query, 'filters') ) {
+    // collection by filters
+    var filters = JSON.parse(args[0]);
+
+    var subresources = ( _.has(query, 'subresources') ) ? args[1].split(',') : [];
+
     func(
-      args[0],
+      filters,
+      subresources,
       callback
-    );
-  } else if ( 2 == args.length ) {
-    func(
-      args[0],
-      args[1],
-      callback
-    );
+      );
+  } else if ( _.has(query, 'subresources') ) {
+    // collection with subresources
+    var subresources;
+
+    if (args.length > 1) {
+      subresources = args[1].split(',');
+
+      func(
+        args[0],
+        subresources,
+        callback
+        );
+    } else {
+      subresources = args[0].split(',');
+
+      func(
+        subresources,
+        callback
+        );
+    }
   } else {
-    func(callback);
+    if ( 1 == args.length ) {
+      func(
+        args[0],
+        callback
+      );
+    } else if ( 2 == args.length ) {
+      func(
+        args[0],
+        args[1],
+        callback
+      );
+    } else {
+      func(callback);
+    }
   }
 }
