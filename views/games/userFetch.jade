@@ -1,0 +1,66 @@
+extends games
+
+block code
+  | &nbsp;
+  | yf.games.fetchUser(
+  |   [game_keys],
+  |   [subresources], // optional
+  |   function(data) {
+  |     // do your thing
+  |   }
+
+block inputs
+  .row.form-group
+    .col-sm-2
+      label game_key
+    .col-sm-4
+      input#game_key.form-control(type="text", placeholder="eg. 328")
+    .col-sm-6.desc
+      p
+      | Game key examples: 'mlb', 'nfl', 328 (2014 MLB season), 242 (2010 NFL season). For the purposes of this demo, you can enter a comma separated list of player keys for the array.
+  h4.spacing Subresources (optional)
+  .row
+    .col-sm-2
+      label subresources
+    .col-sm-4.checkbox-group
+      label
+        input(type="checkbox", name="game_weeks")
+        | game_weeks
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="leagues")
+        | leagues
+  //- .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="players")
+        | players
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="stat_categories")
+        | stat_categories
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="position_types")
+        | position_types
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="roster_positions")
+        | roster_positions
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="teams")
+        | teams
+    .col-sm-6.desc
+      p
+        | note: "teams" subresource only available in the games collection for specific users
+
+block sample
+  pre
+    code.json
+      !{JSON.stringify({game_key:'328',game_id:'328',name:'Baseball',code:'mlb',type:'full',url:'http://baseball.fantasysports.yahoo.com/b1',season:'2014'}, null, 2)};

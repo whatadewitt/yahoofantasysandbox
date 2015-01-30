@@ -1,0 +1,105 @@
+extends games
+
+block description
+  p
+    | Fetch all games for the logged in user. Requires authentication.
+  p
+    | The subresources are the different subresources available for a game resource. This is not a required parameter. If you're only searching for a single subresource, you can simply pass through a string indicating that subresource. The "metadata" subresource comes back by default with all games collection requests.
+  p
+    | The filters object are the filters you wish to add to the request. This is not a required parameter. Filters are as follows:
+  ul
+    li is_available (1 to show games currently in season)
+    li game_types (full, pickem-team, pickem-group, pickem-team-list)
+    li game_codes (any valid game codes)
+    li seasons (any valid seasons)
+
+block code
+  | &nbsp;
+  | yf.games.user(
+  |   {filters}, // optional
+  |   [subresources], // optional
+  |   function(data) {
+  |     // do your thing
+  |   }
+
+block inputs
+  h4 Filters (optional)
+  .row
+    .col-sm-2
+      label is_available
+    .col-sm-4
+      input#is_available.filter.form-control(type="text", placeholder="eg. 1")
+    .col-sm-6.desc
+      p
+        | 1 to only show games currently in season
+  .row
+    .col-sm-2
+      label game_types
+    .col-sm-4
+      input#game_types.filter.form-control(type="text", placeholder="eg. full")
+    .col-sm-6.desc
+      p
+        | full, pickem-team, pickem-group, pickem-team-list
+  .row
+    .col-sm-2
+      label game_codes
+    .col-sm-4
+      input#game_codes.filter.form-control(type="text", placeholder="eg. nfl, mlb")
+    .col-sm-6.desc
+      p
+        | Any valid game codes. Not necessarily useful when entering game keys.
+  .row
+    .col-sm-2
+      label seasons
+    .col-sm-4
+      input#seasons.filter.form-control(type="text", placeholder="eg. 2011, 2012")
+    .col-sm-6.desc
+      p
+        | Any valid seasons
+  h4.spacing Subresources (optional)
+  .row
+    .col-sm-2
+      label subresources
+    .col-sm-4.checkbox-group
+      label
+        input(type="checkbox", name="game_weeks")
+        | game_weeks
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="leagues")
+        | leagues
+  //- .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="players")
+        | players
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="stat_categories")
+        | stat_categories
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="position_types")
+        | position_types
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="roster_positions")
+        | roster_positions
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="teams")
+        | teams
+    .col-sm-6.desc
+      p
+        | note: "teams" subresource only available in the games collection for specific users
+
+
+block sample
+  pre
+    code.json
+      !{JSON.stringify({game_key:'328',game_id:'328',name:'Baseball',code:'mlb',type:'full',url:'http://baseball.fantasysports.yahoo.com/b1',season:'2014'}, null, 2)};

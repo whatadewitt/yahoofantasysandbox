@@ -203,8 +203,14 @@ p.note {
   padding-top: 4px;
 }
 
-.try .desc p {
+.try .desc p,
+.try .desc li {
   font-style: italic;
+}
+
+.try .desc ul {
+  list-style: none;
+  padding-left: 0;
 }
 
 .try input.empty {

@@ -28,7 +28,7 @@ mixin nav
         ul.nav.navbar-nav
           li(class=activeClass == 'home' ? 'active' : '')
             a(href='/') Home
-          li.dropdown(class=data.resource == 'game' ? 'active' : '')
+          li.dropdown(class=data.resource == 'game' || data.resource == 'games' ? 'active' : '')
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               | Game
               span.caret
@@ -54,9 +54,9 @@ mixin nav
                 a(href='/collection/games/fetch') Games
               li
                 a(href='/collection/games/user') User
-              //- li
-                a(href='/collection/games/fetchUser') User Games
-          li.dropdown(class=data.resource == 'league' ? 'active' : '')
+              li
+                a(href='/collection/games/userFetch') User Games
+          li.dropdown(class=data.resource == 'league' || data.resource == 'leagues' ? 'active' : '')
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               | League
               span.caret
@@ -78,11 +78,11 @@ mixin nav
                 a(href='/resource/league/draft_results') Draft Results
               li
                 a(href='/resource/league/transactions') Transactions
-              //- li.divider
-              //- li.dropdown-header Leagues Collection
-              //- li
-              //-   a(href='/collection/leagues/fetch') Leagues
-          li.dropdown(class=data.resource == 'player' ? 'active' : '')
+              li.divider
+              li.dropdown-header Leagues Collection
+              li
+                a(href='/collection/leagues/fetch') Leagues
+          li.dropdown(class=data.resource == 'player' || data.resource == 'players' ? 'active' : '')
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               | Player
               span.caret
@@ -98,14 +98,14 @@ mixin nav
                 a(href='/resource/player/percent_owned') Percent Owned
               li
                 a(href='/resource/player/draft_analysis') Draft Analysis
-              //- li.divider
-              //- li.dropdown-header Players Collection
-              //- li
-              //-   a(href='/collection/players/fetch') Players
-              //- li
-              //-   a(href='/collection/players/leaguFetch') League Players
-              //- li
-              //-   a(href='/collection/players/teamFetch') Team Players
+              li.divider
+              li.dropdown-header Players Collection
+              li
+                a(href='/collection/players/fetch') Players
+              li
+                a(href='/collection/players/leagues') League Players
+              li
+                a(href='/collection/players/teams') Team Players
           li.dropdown(class=data.resource == 'roster' ? 'active' : '')
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               | Roster
@@ -114,7 +114,7 @@ mixin nav
               li.dropdown-header Roster Resource
               li
                 a(href='/resource/roster/players') Players
-          li.dropdown(class=data.resource == 'team' ? 'active' : '')
+          li.dropdown(class=data.resource == 'team' || data.resource == 'teams' ? 'active' : '')
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               | Team
               span.caret
@@ -142,7 +142,7 @@ mixin nav
               //-   a(href='/collection/team/userFetch') User Teams
               //- li
               //-   a(href='/collection/team/gameFetch') Game Teams
-          li.dropdown(class=data.resource == 'transaction' ? 'active' : '')
+          li.dropdown(class=data.resource == 'transaction' || data.resource == 'transactions' ? 'active' : '')
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               | Transaction
               span.caret
@@ -158,7 +158,7 @@ mixin nav
               //-   a(href='/collection/transaction/meta') Transactions
               //- li
               //-   a(href='/collection/transaction/meta') Leagues Transactions
-          li.dropdown(class=data.resource == 'user' ? 'active' : '')
+          li.dropdown(class=data.resource == 'user' || data.resource == 'users' ? 'active' : '')
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               | User
               span.caret

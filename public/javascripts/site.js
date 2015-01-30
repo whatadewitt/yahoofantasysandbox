@@ -63,7 +63,7 @@ $(document).on('ready', function() {
         data.filters = JSON.stringify(data.filters);
       }
 
-      // console.log(data);
+      console.log(data);
       $.get( '/data/' + resource + '/' + subresource,
         data,
         function(res) {
