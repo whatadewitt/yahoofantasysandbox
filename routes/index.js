@@ -70,6 +70,8 @@ exports.getData = function(req, res) {
   var args = _.values(query);
   args.push(callback);
 
+  console.log(resource, subresource);
+
   switch ( args.length ) {
     case 4:
       // would be key, filters, subs, callback

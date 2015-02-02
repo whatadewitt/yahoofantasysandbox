@@ -1,29 +1,20 @@
-extends players
+extends teams
 
 block description
   p
-    | Fetch specific players {player_key1} and {player_key2}.
+    | Fetch all teams for a logged in user.
   p
-    | The only required parameters are the player_key(s), and the callback function. If you're only searching for a single player_key, you should probably be using the player resource, but you can pass through the player_key as a string, and not an array.
+    | The only required parameter is the callback function.
 
 block code
   | &nbsp;
-  | yf.players.fetch(
-  |   [player_keys],
+  | yf.teams.userFetch(
   |   [subresources], // optional
   |   function(data) {
   |     // do your thing
   |   }
 
 block inputs
-  .row.form-group
-    .col-sm-2
-      label player_key
-    .col-sm-4
-      input#player_key.form-control(type="text", placeholder="eg. 328.p.6619")
-    .col-sm-6.desc
-      p
-        | Player key format: {game_key}.p.{player_key}
   h4.spacing Subresources (optional)
   .row
     .col-sm-2
@@ -35,18 +26,23 @@ block inputs
   .row
     .col-sm-4.col-sm-offset-2.checkbox-group
       label
-        input(type="checkbox", name="percent_owned")
-        | percent_owned
+        input(type="checkbox", name="standings")
+        | standings
   .row
     .col-sm-4.col-sm-offset-2.checkbox-group
       label
-        input(type="checkbox", name="ownership")
-        | ownership
+        input(type="checkbox", name="roster")
+        | roster
   .row
     .col-sm-4.col-sm-offset-2.checkbox-group
       label
-        input(type="checkbox", name="draft_analysis")
-        | draft_analysis
+        input(type="checkbox", name="draftresults")
+        | draftresults
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="matchups")
+        | matchups
 
 block sample
   pre

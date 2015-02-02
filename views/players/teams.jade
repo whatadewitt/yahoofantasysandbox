@@ -2,14 +2,17 @@ extends players
 
 block description
   p
-    | Fetch specific players {player_key1} and {player_key2}.
+    | Fetch all players from the teams {team_key1} and {team_key2}.
   p
-    | The only required parameters are the player_key(s), and the callback function. If you're only searching for a single player_key, you should probably be using the player resource, but you can pass through the player_key as a string, and not an array.
+    | The only required parameters are the team_key(s), and the callback function.
+  p
+    | Not all filters are available within the players.teams context.
 
 block code
   | &nbsp;
-  | yf.players.fetch(
-  |   [player_keys],
+  | yf.players.teams(
+  |   [team_keys],
+  |   {filters}, // optional
   |   [subresources], // optional
   |   function(data) {
   |     // do your thing
@@ -18,12 +21,29 @@ block code
 block inputs
   .row.form-group
     .col-sm-2
-      label player_key
+      label team_key
     .col-sm-4
-      input#player_key.form-control(type="text", placeholder="eg. 328.p.6619")
+      input#team_key.form-control(type="text", placeholder="eg. 328.l.34014.t.1")
     .col-sm-6.desc
       p
-        | Player key format: {game_key}.p.{player_key}
+        | Team key format: {game_key}.l.{league_key}.t.{team_key}
+  h4.spacing Filters (optional)
+  .row
+    .col-sm-2
+      label start
+    .col-sm-4
+      input#start.filter.form-control(type="text", placeholder="eg. 0")
+    .col-sm-6.desc
+      p
+        | first record to start from
+  .row
+    .col-sm-2
+      label count
+    .col-sm-4
+      input#count.filter.form-control(type="text", placeholder="eg. 15")
+    .col-sm-6.desc
+      p
+        | number of results to retrieve
   h4.spacing Subresources (optional)
   .row
     .col-sm-2
@@ -37,11 +57,6 @@ block inputs
       label
         input(type="checkbox", name="percent_owned")
         | percent_owned
-  .row
-    .col-sm-4.col-sm-offset-2.checkbox-group
-      label
-        input(type="checkbox", name="ownership")
-        | ownership
   .row
     .col-sm-4.col-sm-offset-2.checkbox-group
       label

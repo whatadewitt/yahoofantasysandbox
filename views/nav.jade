@@ -73,7 +73,7 @@ mixin nav
               li
                 a(href='/resource/league/teams') Teams
               //- li
-                a(href='/resource/league/players') Players
+                a(href='/resource/league/players') Players (better with just players collection by league)
               li
                 a(href='/resource/league/draft_results') Draft Results
               li
@@ -132,16 +132,16 @@ mixin nav
                 a(href='/resource/team/draft_results') Draft Results
               li
                 a(href='/resource/team/matchups') Matchups
-              //- li.divider
-              //- li.dropdown-header Teams Collection
+              li.divider
+              li.dropdown-header Teams Collection
+              li
+                a(href='/collection/teams/fetch') Teams
+              li
+                a(href='/collection/teams/leagues') League Teams
               //- li
-              //-   a(href='/collection/team/fetch') Teams
-              //- li
-              //-   a(href='/collection/team/leagueFetch') League Teams
-              //- li
-              //-   a(href='/collection/team/userFetch') User Teams
-              //- li
-              //-   a(href='/collection/team/gameFetch') Game Teams
+                a(href='/collection/teams/userFetch') User Teams // currently throwing a 500 error... ?
+              li
+                a(href='/collection/teams/games') User Games Teams
           li.dropdown(class=data.resource == 'transaction' || data.resource == 'transactions' ? 'active' : '')
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               | Transaction
@@ -170,7 +170,7 @@ mixin nav
                 a(href='/resource/user/game_leagues') Leagues
               li
                 a(href='/resource/user/game_teams') Teams
-              //- li.divider
-              //- li.dropdown-header Users Collection
-              //- li
-              //-   a(href='/collection/user/users') Users
+              li.divider
+              li.dropdown-header Users Collection
+              li
+                a(href='/collection/user/users') Users
