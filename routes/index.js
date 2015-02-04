@@ -55,8 +55,13 @@ exports.getData = function(req, res) {
 
   var args = Object.map(query);
 
-  var callback = function callback(data) {
-    res.json(data);
+  var callback = function callback(err, data) {
+    console.log(arguments);
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(data);
+    }
   }
 
   if ( _.has(query, 'filters') ) {
