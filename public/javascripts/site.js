@@ -67,7 +67,7 @@ $(document).on('ready', function() {
       $.get( '/data/' + resource + '/' + subresource,
         data,
         function(res) {
-          // console.log(JSON.stringify(res));
+          console.log(JSON.stringify(res));
           $('.data-block h2').text('Output');
           $('.data-block .json').text(JSON.stringify(res, null, 2));
           $('.json').each(function(i, block) {
