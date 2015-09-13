@@ -1,5 +1,15 @@
 var YahooFantasy = require('yahoo-fantasy');
 var _ = require('lodash');
+var refresh = require('passport-oauth2-refresh');
+
+// WHERE DO I ADD THIS?!?
+// refresh.requestNewAccessToken('facebook', 'some_refresh_token', function(err, accessToken, refreshToken) {
+  // You have a new access token, store it in the user object,
+  // or use it to make a new request.
+  // `refreshToken` may or may not exist, depending on the strategy you are using.
+  // You probably don't need it anyway, as according to the OAuth 2.0 spec,
+  // it should be the same as the initial refresh token.
+// });
 
 exports.index = function(req, res) {
   req.session.redirect = '/';
