@@ -30,46 +30,48 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-var strat = new YahooStrategy({
-  consumerKey: APP_KEY,
-  consumerSecret: APP_SECRET,
-  callbackURL: (process.env.APP_URL || require('./conf.js').APP_URL) + '/auth/yahoo/callback'
-},
-function(token, tokenSecret, profile, done) {
-  var data = profile._json;
+passport.use(
+  new YahooStrategy({
+    consumerKey: APP_KEY,
+    consumerSecret: APP_SECRET,
+    callbackURL: (process.env.APP_URL || require('./conf.js').APP_URL) + '/auth/yahoo/callback'
+  },
+  function(token, tokenSecret, profile, done) {
+    var data = profile._json;
 
-  var userObj = {
-    id: profile.id,
-    name: data.profile.nickname,
-    avatar: data.profile.image.imageUrl,
-    dateJoined: new Date().getTime(),
-    lastUpdated: new Date().getTime(),
-    lastVisit: new Date().getTime(),
-    accessToken: token,
-    tokenSecret: tokenSecret,
-    sessionHandle: profile.oauth_session_handle
-  };
+    var userObj = {
+      id: profile.id,
+      name: data.profile.nickname,
+      avatar: data.profile.image.imageUrl,
+      dateJoined: new Date().getTime(),
+      lastUpdated: new Date().getTime(),
+      lastVisit: new Date().getTime(),
+      accessToken: token,
+      tokenSecret: tokenSecret,
+      sessionHandle: profile.oauth_session_handle
+    };
 
-  return done(null, userObj);
-  // for luke... later...
-  // User.findOne({ user_id: profile.id }, function(err, u) {
-  //   console.log(u);
-  //   if (err) { return done(err); }
-  //   if (u) { return done(null, u); }
+    return done(null, userObj);
+    // for luke... later...
+    // User.findOne({ user_id: profile.id }, function(err, u) {
+    //   console.log(u);
+    //   if (err) { return done(err); }
+    //   if (u) { return done(null, u); }
 
-  //   var user = new User();
-  //   user.user_id = profile.id;
-  //   user.token = token;
-  //   user.token_secret = tokenSecret;
-  //   user.name = profile.displayName;
-  //   user.nickname = profile._json.profile.nickname;
+    //   var user = new User();
+    //   user.user_id = profile.id;
+    //   user.token = token;
+    //   user.token_secret = tokenSecret;
+    //   user.name = profile.displayName;
+    //   user.nickname = profile._json.profile.nickname;
 
-  //   // user.save(function(e, u) {
-  //   //   if (e) return done(e);
-  //   //   return done(null, profile);
-  //   // });
-  // });
-});
+    //   // user.save(function(e, u) {
+    //   //   if (e) return done(e);
+    //   //   return done(null, profile);
+    //   // });
+    // });
+  })
+);
 
 // passport.use(strategy);
 // refresh.use(strategy);
@@ -77,7 +79,7 @@ function(token, tokenSecret, profile, done) {
 var app = express();
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 80);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon('public/images/favicon.png'));
