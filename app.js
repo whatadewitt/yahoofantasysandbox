@@ -15,6 +15,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , passport = require('passport')
+  , refresh = require('passport-oauth2-refresh')
   , YahooStrategy = require('https-passport-yahoo-oauth').Strategy
   , YahooFantasy = require('yahoo-fantasy')
   , APP_KEY = process.env.APP_KEY || require('./conf.js').APP_KEY
@@ -29,7 +30,8 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-passport.use(new YahooStrategy({
+passport.use(
+  new YahooStrategy({
     consumerKey: APP_KEY,
     consumerSecret: APP_SECRET,
     callbackURL: (process.env.APP_URL || require('./conf.js').APP_URL) + '/auth/yahoo/callback'
@@ -48,6 +50,8 @@ passport.use(new YahooStrategy({
       tokenSecret: tokenSecret,
       sessionHandle: profile.oauth_session_handle
     };
+
+    app.yf.setUserToken(userObj.accessToken, userObj.tokenSecret, userObj.sessionHandle);
 
     return done(null, userObj);
     // for luke... later...
@@ -68,8 +72,11 @@ passport.use(new YahooStrategy({
     //   //   return done(null, profile);
     //   // });
     // });
-  }
-));
+  })
+);
+
+// passport.use(strategy);
+// refresh.use(strategy);
 
 var app = express();
 
@@ -88,6 +95,8 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
   app.disable('view cache');
+
+  app.yf = new YahooFantasy(APP_KEY, APP_SECRET);
 });
 
 app.configure('development', function(){
@@ -97,7 +106,7 @@ app.configure('development', function(){
 app.get('/', checkAuth, routes.index);
 app.get('/resource/:resource/:subresource', checkAuth, routes.console);
 app.get('/collection/:resource/:subresource', checkAuth, routes.console);
-app.get('/data/:resource/:subresource', setAppToken, routes.getData);
+app.get('/data/:resource/:subresource', routes.getData);
 
 app.get('/auth/yahoo',
   passport.authenticate('yahoo', { failureRedirect: '/login' }),
@@ -134,15 +143,6 @@ function checkAuth(req, res, next) {
   }
 
   req.userObj = userObj;
-
-  next();
-}
-
-function setAppToken(req, res, next) {
-  req.yahoo = {
-    key: APP_KEY,
-    secret: APP_SECRET
-  };
 
   next();
 }
