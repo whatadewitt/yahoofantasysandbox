@@ -51,6 +51,8 @@ passport.use(
       sessionHandle: profile.oauth_session_handle
     };
 
+    app.yf.setUserToken(userObj.accessToken, userObj.tokenSecret, userObj.sessionHandle);
+
     return done(null, userObj);
     // for luke... later...
     // User.findOne({ user_id: profile.id }, function(err, u) {
@@ -93,6 +95,8 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
   app.disable('view cache');
+
+  app.yf = new YahooFantasy(APP_KEY, APP_SECRET);
 });
 
 app.configure('development', function(){
@@ -102,7 +106,7 @@ app.configure('development', function(){
 app.get('/', checkAuth, routes.index);
 app.get('/resource/:resource/:subresource', checkAuth, routes.console);
 app.get('/collection/:resource/:subresource', checkAuth, routes.console);
-app.get('/data/:resource/:subresource', setAppToken, routes.getData);
+app.get('/data/:resource/:subresource', routes.getData);
 
 app.get('/auth/yahoo',
   passport.authenticate('yahoo', { failureRedirect: '/login' }),
@@ -139,15 +143,6 @@ function checkAuth(req, res, next) {
   }
 
   req.userObj = userObj;
-
-  next();
-}
-
-function setAppToken(req, res, next) {
-  req.yahoo = {
-    key: APP_KEY,
-    secret: APP_SECRET
-  };
 
   next();
 }
