@@ -85,7 +85,7 @@ exports.getData = function(req, res) {
 
   args = _.values(query);
   args.push(callback);
-
+  
   console.log(resource, subresource);
 
   switch ( args.length ) {
