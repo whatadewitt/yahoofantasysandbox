@@ -4,15 +4,6 @@ var _ = require('lodash');
 var https = require('https');
 var querystring = require('querystring');
 
-// WHERE DO I ADD THIS?!?
-// refresh.requestNewAccessToken('facebook', 'some_refresh_token', function(err, accessToken, refreshToken) {
-  // You have a new access token, store it in the user object,
-  // or use it to make a new request.
-  // `refreshToken` may or may not exist, depending on the strategy you are using.
-  // You probably don't need it anyway, as according to the OAuth 2.0 spec,
-  // it should be the same as the initial refresh token.
-// });
-
 exports.index = function(req, res) {
   req.session.redirect = '/';
 
@@ -54,9 +45,9 @@ exports.getData = function(req, res) {
   // } else {
   //   yf.setUserToken(null, null, null);
   // }
-
-  func = yf[resource][subresource];
-
+  
+  // func = yf[resource][subresource];
+  
   Object.map = function(obj) {
     var key, arr = [];
     for (key in obj) {
@@ -87,20 +78,20 @@ exports.getData = function(req, res) {
   args.push(callback);
   
   console.log(resource, subresource);
-
+  
   switch ( args.length ) {
     case 4:
       // would be key, filters, subs, callback
       // args[2] = args[2].split(',');
 
-      func(args[0], args[1], args[2], args[3]);
+      yf[resource][subresource](args[0], args[1], args[2], args[3]);
       break;
 
     case 3:
       // would be key, filters or subs, callback for collection
       // could be key, another key, callback too...
 
-      func(args[0], args[1], args[2]);
+      yf[resource][subresource](args[0], args[1], args[2]);
       break;
 
     case 2:
@@ -108,12 +99,12 @@ exports.getData = function(req, res) {
       // if ( _.has(query, 'subresources') ) {
       //   args[0] = args[0].split(',');
       // }
-
-      func(args[0], args[1]);
+      
+      yf[resource][subresource](args[0], args[1]);
       break;
 
     default:
-      func(args[0]);
+      yf[resource][subresource](args[0]);
       break;
   }
 };
