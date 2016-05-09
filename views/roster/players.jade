@@ -2,13 +2,16 @@ extends roster
 
 block description
   p
-    | Access the players collection within the roster. Moving forward, the functionality to query a roster by date will be added.
+    | Access the players collection within the roster.
   p
-    | For the purposes of this API, we only ever query the "players" subresource.
+    | For the purposes of this API, we only ever query the base "roster" resource, but use the "players" subresource to keep things consistent with the rest of the code.
+  p
+    | In version 4.1.0, the ability to add an optional parameter for "date" was added. Per the <a href="https://developer.yahoo.com/fantasysports/guide/roster-resource.html#roster-resource-desc" title="Yahoo! Fantasy API documentation" target="_blank" rel="noopener noreferrer">API docs</a>, this can be either a week or specific day. The API allows you to specify a week number (NFL), or a string of format 'YYYY-MM-DD' to retrieve a team's roster on a specific date (MLB, NHL, NBA).
 
 block code
   | &nbsp;
   | yf.roster.players(
+  |   date, // optional
   |   team_key,
 
 block sample

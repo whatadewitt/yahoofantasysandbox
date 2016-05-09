@@ -14,7 +14,7 @@ $(document).on('ready', function() {
         $items = $('.try .tab-pane.active input[type=text]');
       }
 
-      $.each($items.not(".filter"), function(idx, val) {
+      $.each($items.not(".filter, .optional"), function(idx, val) {
         if ( !$(val).val() ) {
           $(val).addClass('empty');
         }
