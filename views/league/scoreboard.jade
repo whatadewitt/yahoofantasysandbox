@@ -6,12 +6,23 @@ block description
   p
     | Only works for Head to Head leagues.
   p
-    | I hope to add the "week" parameter soon.
+    | Optional "week" parameter added in v0.4.3
 
 block code
   | &nbsp;
   | yf.league.scoreboard(
   |   league_key,
+  |   week, // optional
+
+block subinputs
+  .row.form-group
+    .col-sm-2
+      label week
+    .col-sm-4
+      input#week.optional.form-control(type="text", placeholder="eg. 10")
+    .col-sm-6.desc
+      p
+        | Week (optional)
 
 block sample
   pre

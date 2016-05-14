@@ -6,12 +6,23 @@ block description
   p
     | Only works for Head to Head leagues.
   p
-    | I hope to add the "weeks" parameter soon.
+    | Added the "weeks" param in v0.4.3. Can be passed as an array of integers or a comma separated string.
 
 block code
   | &nbsp;
   | yf.team.matchups(
   |   team_key,
+  |   [weeks], // optional (array or comma-separated string)
+
+block subinputs
+  .row.form-group
+    .col-sm-2
+      label weeks
+    .col-sm-4
+      input#weeks.optional.form-control(type="text", placeholder="eg. 2,3,6")
+    .col-sm-6.desc
+      p
+        | Weeks (array, enter as comma separated values, optional)
 
 block sample
   pre

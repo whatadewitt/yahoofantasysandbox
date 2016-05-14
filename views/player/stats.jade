@@ -10,6 +10,17 @@ block code
   | &nbsp;
   | yf.player.stats(
   |   player_key,
+  |   week, // optional
+
+block subinputs
+  .row.form-group
+    .col-sm-2
+      label week
+    .col-sm-4
+      input#week.optional.form-control(type="text", placeholder="eg. 10")
+    .col-sm-6.desc
+      p
+        | Week (optional)
 
 block sample
   pre
