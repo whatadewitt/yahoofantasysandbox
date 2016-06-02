@@ -8,7 +8,7 @@ ES6?
 
 OAuth2 branch
 
-transaction collection multiple players
+transaction collection multiple players, change names to add_players
 <players>
   <player />
   <player />
