@@ -152,12 +152,14 @@ mixin nav
                 a(href='/resource/transaction/meta') Meta
               li
                 a(href='/resource/transaction/players') Players
-              //- li.divider // waiting on these... not really needed for me at the moment...
-              //- li.dropdown-header Transactions Collection
-              //- li
-              //-   a(href='/collection/transaction/meta') Transactions
-              //- li
-              //-   a(href='/collection/transaction/meta') Leagues Transactions
+              li.divider
+              li.dropdown-header Transactions Collection
+                li
+                  a(href='/collection/transactions/add_player') Add Player
+                li
+                  a(href='/collection/transactions/drop_player') Drop Player
+                li
+                  a(href='/collection/transactions/adddrop_player') Add/Drop Player
           li.dropdown(class=data.resource == 'user' || data.resource == 'users' ? 'active' : '')
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               | User

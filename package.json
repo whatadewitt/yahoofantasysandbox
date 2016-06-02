@@ -1,6 +1,6 @@
 {
   "name": "fantasysandbox",
-  "version": "0.4.4",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
     "start": "node app"
@@ -19,7 +19,7 @@
     "passport-yahoo-oauth2": "^0.2.5",
     "q": "^1.0.1",
     "request": "^2.72.0",
-    "yahoo-fantasy": "^0.4.4"
+    "yahoo-fantasy": "^0.5.0"
   },
   "subdomain": "fbbl",
   "engines": {

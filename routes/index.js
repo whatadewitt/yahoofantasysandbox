@@ -80,6 +80,12 @@ exports.getData = function(req, res) {
   console.log(resource, subresource);
   
   switch ( args.length ) {
+    case 5:
+      // i think this only happens with transactions.adddrop_player
+
+      yf[resource][subresource](args[0], args[1], args[2], args[3]);
+      break;
+      
     case 4:
       // would be key, filters, subs, callback
       // args[2] = args[2].split(',');

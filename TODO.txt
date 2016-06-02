@@ -1,9 +1,20 @@
 todo:
 
-_.chain
-
-collections
+_.chain? remove lodash completely?
 
 rename functions to "mapTeam" from "teamMap" (as examples)
 
-error handling
+ES6?
+
+OAuth2 branch
+
+transaction collection multiple players
+<players>
+  <player />
+  <player />
+  <player />
+  <player />
+</players>
+clean up matchups output
+
+^^ could be 1.0?
