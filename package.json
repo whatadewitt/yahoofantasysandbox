@@ -19,7 +19,7 @@
     "passport-yahoo-oauth2": "^0.2.5",
     "q": "^1.0.1",
     "request": "^2.72.0",
-    "yahoo-fantasy": "^0.5.2"
+    "yahoo-fantasy": "^0.5.3"
   },
   "subdomain": "fbbl",
   "engines": {
