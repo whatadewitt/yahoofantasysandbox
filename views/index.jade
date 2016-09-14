@@ -37,6 +37,14 @@ block content
     .container
       h2 Changelog
       
+      h4 1.0.0
+      ul
+        li
+          | Breaking changes
+        li
+          | Fixed NFL scoreboard/matchups bug (<a href="https://github.com/whatadewitt/yfsapi/issues/19">Issue #19</a>)
+        li
+          | In fixing this bug I realized that my "team" set up was really only useful for MLB fantasy, so I rewrote team mapping to work better across all sports and give additional details that weren't previously reported. This will cause errors if you are using the team.manager attribute in your code.
       h4 0.5.3
       ul
         li
