@@ -1,0 +1,15 @@
+extends game
+
+block description
+  p
+    | You can use this subresource to query start and end dates for each week in the game.
+
+block code
+  | &nbsp;
+  | yf.game.game_weeks(
+  |   game_key,
+
+block sample
+  pre
+    code.json
+      =JSON.stringify({"game_key":"328","game_id":"328","name":"Baseball","code":"mlb","type":"full","url":"http://baseball.fantasysports.yahoo.com/b1","season":"2014","weeks":[{"week":"1","start":"2014-03-22","end":"2014-04-06"},{"week":2,"start":"2014-04-07","end":"2014-04-13"},{"week":3,"start":"2014-04-14","end":"2014-04-20"},{"week":4,"start":"2014-04-21","end":"2014-04-27"},{"week":5,"start":"2014-04-28","end":"2014-05-04"},{"week":6,"start":"2014-05-05","end":"2014-05-11"},{"week":7,"start":"2014-05-12","end":"2014-05-18"},{"week":8,"start":"2014-05-19","end":"2014-05-25"},{"week":9,"start":"2014-05-26","end":"2014-06-01"},{"week":10,"start":"2014-06-02","end":"2014-06-08"},{"week":11,"start":"2014-06-09","end":"2014-06-15"},{"week":12,"start":"2014-06-16","end":"2014-06-22"},{"week":13,"start":"2014-06-23","end":"2014-06-29"},{"week":14,"start":"2014-06-30","end":"2014-07-06"},{"week":15,"start":"2014-07-07","end":"2014-07-20"},{"week":16,"start":"2014-07-21","end":"2014-07-27"},{"week":17,"start":"2014-07-28","end":"2014-08-03"},{"week":18,"start":"2014-08-04","end":"2014-08-10"},{"week":19,"start":"2014-08-11","end":"2014-08-17"},{"week":20,"start":"2014-08-18","end":"2014-08-24"},{"week":21,"start":"2014-08-25","end":"2014-08-31"},{"week":22,"start":"2014-09-01","end":"2014-09-07"},{"week":23,"start":"2014-09-08","end":"2014-09-14"},{"week":24,"start":"2014-09-15","end":"2014-09-21"},{"week":25,"start":"2014-09-22","end":"2014-09-28"}]}, null, 2)

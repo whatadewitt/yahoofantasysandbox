@@ -1,0 +1,22 @@
+extends ../console
+
+block header
+  p
+    | With the Game API, you can obtain the fantasy game related information, like the fantasy game name, the Yahoo! game code, and season.
+  p
+    | To refer to a Game resource, you'll need to provide a game_key, which will either be a game_id or game_code. The game_id is a unique ID identifying a given fantasy game for a given season. A game_code generally identifies a game, independent of season, and, when used as a game_key, will typically return the current season of that game. For instance, the game_code for the Free NFL game is nfl; using nfl as your game_key during the 2014 season would be the same as providing the game_id for the 2014 season of the NFL game (331). As of the 2010 seasons, the Plus and Free games have been combined into a single code. If you always want the current season of a game, the game_code should be used as a game_key.
+  p
+    | You can find a list of common game_ids in the <a href="https://developer.yahoo.com/fantasysports/guide/game-resource.html">official Yahoo! Fantasy Sports documentation for the game resource</a>.
+  p
+    | maps to http://fantasysports.yahooapis.com/fantasy/v2/game/{game_key}/{sub_resource}
+
+block inputs
+  .row.form-group
+    .col-sm-2
+      label game_key
+    .col-sm-4
+      input#game_key.form-control(type="text", placeholder="eg. 328")
+    .col-sm-6.desc
+      p
+        | Game key examples: 'mlb', 'nfl', 328 (2014 MLB season), 242 (2010 NFL season)
+  block subinputs

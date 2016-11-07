@@ -1,0 +1,28 @@
+extends player
+
+block description
+  p
+    | The player ownership status within a league (whether they're owned by a team, on waivers, or free agents).
+  p
+    | Only relevant within a league.
+
+block code
+  | &nbsp;
+  | yf.player.ownership(
+  |   player_key,
+  |   league_key,
+
+block subinputs
+  .row.form-group
+    .col-sm-2
+      label league_key
+    .col-sm-4
+      input#league_key.form-control(type="text", placeholder="eg. 328.l.34014")
+    .col-sm-6.desc
+      p
+        | League key format: {game_key}.l.{league_id}
+
+block sample
+  pre
+    code.json
+      =JSON.stringify({"player_key":"328.p.6619","player_id":"6619","name":{"full":"Albert Pujols","first":"Albert","last":"Pujols","ascii_first":"Albert","ascii_last":"Pujols"},"editorial_player_key":"mlb.p.6619","editorial_team_key":"mlb.t.3","editorial_team_full_name":"Los Angeles Angels","editorial_team_abbr":"LAA","uniform_number":"5","display_position":"1B","headshot":"http://l.yimg.com/iu/api/res/1.2/iium.CfIaaN.XDy7fB4Reg--/YXBwaWQ9eXZpZGVvO…g--/http://l.yimg.com/j/assets/i/us/sp/v/mlb/players_l/20130405/6619.1.jpg","is_undroppable":"0","position_type":"B","eligible_positions":["1B","Util"],"status":{"ownership_type":"team","owner_team_key":"328.l.34014.t.7","owner_team_name":"TNTNT"},"league":{"league_key":"328.l.34014","league_id":"34014","name":"Freddy Beach Baseball","url":"http://baseball.fantasysports.yahoo.com/b1/34014","draft_status":"postdraft","num_teams":12,"edit_key":"2014-11-14","weekly_deadline":"intraday","league_update_timestamp":"1411979069","scoring_type":"head","league_type":"private","renew":"308_51222","renewed":"","short_invitation_url":"https://yho.com/mlb?l=34014&k=0a2bf56970bb200c","is_pro_league":"0","current_week":"25","start_week":"1","start_date":"2014-03-22","end_week":"25","end_date":"2014-09-28","is_finished":1}}, null, 2)

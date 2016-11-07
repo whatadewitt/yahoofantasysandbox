@@ -1,0 +1,17 @@
+extends team
+
+block description
+  p
+    | List of players drafted by the team.
+  p
+    | I'm using "draft_results" instead of the documented "draftresults" simply for consistency.
+
+block code
+  | &nbsp;
+  | yf.team.draft_results(
+  |   team_key,
+
+block sample
+  pre
+    code.json
+      =JSON.stringify({"team_key":"328.l.34014.t.1","team_id":"1","name":"ChicksDigTheLongBall","url":"http://baseball.fantasysports.yahoo.com/b1/34014/1","team_logo":"http://l.yimg.com/dh/ap/fantasy/img/mlb/icon_6_lg.gif","waiver_priority":4,"number_of_moves":"19","number_of_trades":0,"clinched_playoffs":1,"managers":[{"manager_id":"1","nickname":"--hidden--","guid":"RYWP7M53IC626MGOX36ZWCM4FA","is_commissioner":"1"}],"draft_results":[{"pick":11,"round":1,"cost":"34","team_key":"328.l.34014.t.1","player_key":"328.p.7254"},{"pick":37,"round":4,"cost":"26","team_key":"328.l.34014.t.1","player_key":"328.p.8857"},{"pick":67,"round":6,"cost":"10","team_key":"328.l.34014.t.1","player_key":"328.p.8412"},{"pick":70,"round":6,"cost":"29","team_key":"328.l.34014.t.1","player_key":"328.p.7779"},{"pick":83,"round":7,"cost":"6","team_key":"328.l.34014.t.1","player_key":"328.p.8167"},{"pick":84,"round":7,"cost":"3","team_key":"328.l.34014.t.1","player_key":"328.p.9126"},{"pick":91,"round":8,"cost":"16","team_key":"328.l.34014.t.1","player_key":"328.p.7483"},{"pick":99,"round":9,"cost":"3","team_key":"328.l.34014.t.1","player_key":"328.p.6014"},{"pick":100,"round":9,"cost":"13","team_key":"328.l.34014.t.1","player_key":"328.p.6637"},{"pick":120,"round":10,"cost":"1","team_key":"328.l.34014.t.1","player_key":"328.p.6765"},{"pick":137,"round":12,"cost":"2","team_key":"328.l.34014.t.1","player_key":"328.p.5763"},{"pick":153,"round":13,"cost":"5","team_key":"328.l.34014.t.1","player_key":"328.p.9302"},{"pick":162,"round":14,"cost":"11","team_key":"328.l.34014.t.1","player_key":"328.p.7865"},{"pick":170,"round":15,"cost":"2","team_key":"328.l.34014.t.1","player_key":"328.p.9140"},{"pick":177,"round":15,"cost":"2","team_key":"328.l.34014.t.1","player_key":"328.p.9327"},{"pick":191,"round":16,"cost":"7","team_key":"328.l.34014.t.1","player_key":"328.p.8554"},{"pick":192,"round":16,"cost":"1","team_key":"328.l.34014.t.1","player_key":"328.p.8773"},{"pick":193,"round":17,"cost":"3","team_key":"328.l.34014.t.1","player_key":"328.p.6983"},{"pick":194,"round":17,"cost":"36","team_key":"328.l.34014.t.1","player_key":"328.p.7066"},{"pick":195,"round":17,"cost":"50","team_key":"328.l.34014.t.1","player_key":"328.p.7163"}]}, null, 2)

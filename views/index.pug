@@ -1,0 +1,147 @@
+extends layout
+
+block content
+  +nav
+
+  .container.head.section
+    h1 Yahoo! Fantasy API Node Module
+
+    p
+      | This is a node module created to wrap the Yahoo! Fantasy Sports API (<a href="https://developer.yahoo.com/fantasysports/guide/index.html">link</a>). At the moment, not all subresources are available, nor are any of the 'collection' elements. I do hope to add them, and they have been added to the code. If the token expires, the module will return a 'token_expired' error.
+    p
+      | The API is designed to act as a helper for those interacting with the Y! Fantasy API. The goal is for ease of use for the user, both in terms of querying endpoints and parsing responses. I've noticed that in working with the API, the data is not always the easiest to understand, so hopefully what I have created here will help people out.
+
+    h2 Installation
+
+    p
+      | You can install the module via npm by running:
+    pre
+      code $ npm install yahoo-fantasy
+
+    h2 Usage Notes
+
+    p
+      | In version 2.0, OAuth2.0 became the only way to communicate with the Yahoo! API. This was done for a number of reasons, but I do believe this will make it a better module in terms of both security, and should make it easier to use. The OAuth token from Yahoo! lasts for only an hour, so if the response returned from Yahoo! is an error, you'll have to refresh the authentication token from within your app.
+    p
+      | You can view the source code for this project on <a href="https://github.com/whatadewitt/yahoofantasysandbox/" target="_blank">Github</a>. At the very least it will give you an idea of how you can use this module. 
+
+    h2 Licence
+    p
+      | This module is available under the <a href="http://opensource.org/licenses/MIT">MIT Licence</a>
+
+    h2 Bugs &amp; Issues
+    p
+      | This project will always very much be a work in progress, and I'm not perfect. It's a labour of love and there will most certainly be bugs. Please report any issues via the <a href="https://github.com/whatadewitt/yfsapi/issues" target="_blank">GitHub issues page</a>.
+
+  .dark.section
+    .container
+      h2 Changelog
+      
+      h4 2.0.0
+      ul
+        li
+          | Moved to Yahoo!'s OAuth2.0 authentication mechanism.
+      h4 1.0.2
+      ul 
+        li 
+          | Fixed game resource roster postions callback bug.
+      h4 1.0.1
+      ul 
+        li 
+          | Fixed a typo that was breaking team mapping.
+      h4 1.0.0
+      ul
+        li
+          | Breaking changes
+        li
+          | Fixed NFL scoreboard/matchups bug (<a href="https://github.com/whatadewitt/yfsapi/issues/19">Issue #19</a>)
+        li
+          | In fixing this bug I realized that my "team" set up was really only useful for MLB fantasy, so I rewrote team mapping to work better across all sports and give additional details that weren't previously reported. This will cause errors if you are using the team.manager attribute in your code.
+      h4 0.5.3
+      ul
+        li
+          | Fixed a bug where leagueFetch was throwing an error, thanks <a href="https://github.com/danielspector" target="_blank">danielspector</a>!
+      h4 0.5.2
+      ul
+        li
+          | Fixed a bug where player stats by week url was not being created properly, thanks <a href="https://github.com/withsmilo" target="_blank">withsmilo</a>!
+      h4 0.5.1
+      ul
+        li
+          | Fixed a bug where collections that contained subresources would return no data.
+      h4 0.5.0
+      ul
+        li
+          | Added "Transactions" collection with functionality to add players, drop players, and add/drop players, thanks again [githubsmilo](https://github.com/githubsmilo)!
+      h4 0.4.4
+      ul
+        li
+          | Fixed a bug in player.draft_analysis, thanks <a href="https://github.com/githubsmilo" target="_blank">githubsmilo</a>!
+      h4 0.4.3
+      ul
+        li
+          | Added weeks param for league.scoreboard
+        li
+          | Added weeks param for team.matchups
+        li
+          | Fixed a bug where individual players weren't mapping properly
+        li
+          | Minor code cleanup
+      h4 0.4.2
+      ul
+        li
+          | Added the ability to specify a date or week when querying the roster resource.
+        li
+          | Cleaned up the player normalization model
+        li
+          | Fixed a bug where the team.roster call was erroring
+      h4 0.4.1
+      ul
+        li
+          | Fixes to how POST data is handled
+      h4 0.4.0
+      ul
+        li
+          | Significantly restructured the code to have more consistency and set it up better for future plans, namely POST methods and proper unit testing
+          |* Removed the "refresh user token" and instead return the error to the user who can handle the refresh within their application.
+      h4 0.3.1
+      ul
+        li
+          | Additional player attributes added, thanks <a href="https://github.com/ryus08" target="_blank">ryus08</a>!
+
+      h4 0.3.0
+      ul
+        li
+          | Added a method to refresh the user's token if it has expired.
+      h4 0.2.2
+      ul
+        li
+          | Hotfix to fix "Teams" collection - use error first convention
+      h4 0.2.0
+      ul
+        li
+          | Made helper classes more consistent
+        li
+          | Added collections for games, leagues, players, and teams
+        li
+          | Moved to error first convention because JavaScript
+
+      h4 0.1.2
+      ul
+        li
+          | Added 'Team Matchups' subresource
+        li
+          | Added 'League Scoreboard' subresource
+        li
+          | Minor code cleanup and improvements
+
+      h4 0.1.1
+      ul
+        li
+          | Refactored module to fix a bug where user sessions were not necessarily unique because of require caching.
+
+      h4 0.1
+      ul
+        li
+          | Initial release.
+

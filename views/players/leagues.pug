@@ -1,0 +1,147 @@
+extends players
+
+block description
+  p
+    | Fetch all players from the leagues {league_key1} and {league_key2}.
+  p
+    | The only required parameters are the league_key(s), and the callback function.
+  p
+    | All filters can be used within the players.leagues context.
+
+block code
+  | &nbsp;
+  | yf.players.leagues(
+  |   [league_keys],
+  |   {filters}, // optional
+  |   [subresources], // optional
+
+block inputs
+  .row.form-group
+    .col-sm-2
+      label league_key
+    .col-sm-4
+      input#league_key.form-control(type="text", placeholder="eg. 328.l.34014")
+    .col-sm-6.desc
+      p
+        | League key format: {game_key}.l.{league_key}
+  h4.spacing Filters (optional)
+  .row
+    .col-sm-2
+      label position
+    .col-sm-4
+      input#position.filter.form-control(type="text", placeholder="eg. QB")
+    .col-sm-6.desc
+      p
+        | Valid player positions
+  .row
+    .col-sm-2
+      label status
+    .col-sm-4
+      input#status.filter.form-control(type="text", placeholder="eg. A")
+    .col-sm-6.desc
+      ul
+        li A (all available players)
+        li FA (free agents only)
+        li W (waivers only)
+        li T (all taken players)
+        li K (keepers only)
+  .row
+    .col-sm-2
+      label search
+    .col-sm-4
+      input#seach.filter.form-control(type="text", placeholder="eg. trout")
+    .col-sm-6.desc
+      p
+        | Search for a player by name
+  .row
+    .col-sm-2
+      label sort
+    .col-sm-4
+      input#sort.filter.form-control(type="text", placeholder="eg. NAME")
+    .col-sm-6.desc
+      ul
+        li {stat_id}
+        li NAME (last, first)
+        li OR (overall rank)
+        li AR (actual rank)
+        li PTS (fantasy points)
+  .row
+    .col-sm-2
+      label sort_type
+    .col-sm-4
+      input#sort_type.filter.form-control(type="text", placeholder="eg. week")
+    .col-sm-6.desc
+      ul
+        li season
+        li date (baseball, basketball and hockey only)
+        li week (football only)
+        li lastweek (baseball, basketball and hockey only)
+        li lastmonth
+  .row
+    .col-sm-2
+      label sort_season
+    .col-sm-4
+      input#sort_season.filter.form-control(type="text", placeholder="eg. 2014")
+    .col-sm-6.desc
+      p
+        | year
+  .row
+    .col-sm-2
+      label sort_week
+    .col-sm-4
+      input#sort_week.filter.form-control(type="text", placeholder="eg. 4")
+    .col-sm-6.desc
+      p
+        | week
+  .row
+    .col-sm-2
+      label start
+    .col-sm-4
+      input#start.filter.form-control(type="text", placeholder="eg. 2014-09-31")
+    .col-sm-6.desc
+      p
+        | YYYY-MM-DD
+  .row
+    .col-sm-2
+      label start
+    .col-sm-4
+      input#start.filter.form-control(type="text", placeholder="eg. 0")
+    .col-sm-6.desc
+      p
+        | first record to start from
+  .row
+    .col-sm-2
+      label count
+    .col-sm-4
+      input#count.filter.form-control(type="text", placeholder="eg. 15")
+    .col-sm-6.desc
+      p
+        | number of results to retrieve
+  h4.spacing Subresources (optional)
+  .row
+    .col-sm-2
+      label subresources
+    .col-sm-4.checkbox-group
+      label
+        input(type="checkbox", name="stats")
+        | stats
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="ownership")
+        | ownership
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="percent_owned")
+        | percent_owned
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="draft_analysis")
+        | draft_analysis
+
+block sample
+  pre
+    code.json
+      =JSON.stringify([{"league_key":"328.l.34014","league_id":"34014","name":"Freddy Beach Baseball","url":"http://baseball.fantasysports.yahoo.com/archive/mlb/2014/34014","league_chat_id":"","draft_status":"postdraft","num_teams":12,"edit_key":"2015-02-04","weekly_deadline":"intraday","league_update_timestamp":"1411979069","scoring_type":"head","league_type":"private","renew":"308_51222","renewed":"346_1106","short_invitation_url":"https://yho.com/mlb?l=34014&k=0a2bf56970bb200c","is_pro_league":"0","current_week":"25","start_week":"1","start_date":"2014-03-22","end_week":"25","end_date":"2014-09-28","is_finished":1,"players":[{"player_key":"328.p.7264","player_id":"7264","name":{"full":"José Bautista","first":"José","last":"Bautista","ascii_first":"Jose","ascii_last":"Bautista"},"editorial_player_key":"mlb.p.7264","editorial_team_key":"mlb.t.14","editorial_team_full_name":"Toronto Blue Jays","editorial_team_abbr":"Tor","uniform_number":"19","display_position":"1B,OF","headshot":{"url":"http://l.yimg.com/iu/api/res/1.2/9V26x2764H1l8ST0R6eajg--/YXBwaWQ9eXZpZGVvO…g--/http://l.yimg.com/j/assets/i/us/sp/v/mlb/players_l/20130405/7264.1.jpg","size":"small"},"is_undroppable":"0","position_type":"B","eligible_positions":["1B","OF","Util"],"draft_analysis":{"average_pick":"30.8","average_round":"3.3","average_cost":"27.0","percent_drafted":"1.00"}},{"player_key":"328.p.8644","player_id":"8644","name":{"full":"Domonic Brown","first":"Domonic","last":"Brown","ascii_first":"Domonic","ascii_last":"Brown"},"editorial_player_key":"mlb.p.8644","editorial_team_key":"mlb.t.22","editorial_team_full_name":"Philadelphia Phillies","editorial_team_abbr":"Phi","uniform_number":"9","display_position":"OF","headshot":{"url":"http://l.yimg.com/iu/api/res/1.2/wkPExRUb.XyjBpPKmHWUFQ--/YXBwaWQ9eXZpZGVvO…g--/http://l.yimg.com/j/assets/i/us/sp/v/mlb/players_l/20130405/8644.1.jpg","size":"small"},"is_undroppable":"0","position_type":"B","eligible_positions":["OF","Util"],"draft_analysis":{"average_pick":"124.7","average_round":"11.8","average_cost":"9.4","percent_drafted":"1.00"}},{"player_key":"328.p.7498","player_id":"7498","name":{"full":"Shin-Soo Choo","first":"Shin-Soo","last":"Choo","ascii_first":"Shin-Soo","ascii_last":"Choo"},"editorial_player_key":"mlb.p.7498","editorial_team_key":"mlb.t.13","editorial_team_full_name":"Texas Rangers","editorial_team_abbr":"Tex","uniform_number":"17","display_position":"OF","headshot":{"url":"http://l.yimg.com/iu/api/res/1.2/vpGz9xTjYIf.3trxbXZvgw--/YXBwaWQ9eXZpZGVvO…g--/http://l.yimg.com/j/assets/i/us/sp/v/mlb/players_l/20130405/7498.1.jpg","size":"small"},"is_undroppable":"0","position_type":"B","eligible_positions":["OF","Util"],"draft_analysis":{"average_pick":"42.0","average_round":"4.4","average_cost":"25.1","percent_drafted":"1.00"}},{"player_key":"328.p.6983","player_id":"6983","name":{"full":"Coco Crisp","first":"Coco","last":"Crisp","ascii_first":"Coco","ascii_last":"Crisp"},"editorial_player_key":"mlb.p.6983","editorial_team_key":"mlb.t.11","editorial_team_full_name":"Oakland Athletics","editorial_team_abbr":"Oak","uniform_number":"4","display_position":"OF","headshot":{"url":"http://l.yimg.com/iu/api/res/1.2/gTI1sn2_l8sDR3B_epsvpA--/YXBwaWQ9eXZpZGVvO…g--/http://l.yimg.com/j/assets/i/us/sp/v/mlb/players_l/20130405/6983.1.jpg","size":"small"},"is_undroppable":"0","position_type":"B","eligible_positions":["OF","Util"],"draft_analysis":{"average_pick":"128.0","average_round":"12.1","average_cost":"7.1","percent_drafted":"1.00"}},{"player_key":"328.p.7934","player_id":"7934","name":{"full":"Carlos González","first":"Carlos","last":"González","ascii_first":"Carlos","ascii_last":"Gonzalez"},"editorial_player_key":"mlb.p.7934","editorial_team_key":"mlb.t.27","editorial_team_full_name":"Colorado Rockies","editorial_team_abbr":"Col","uniform_number":"5","display_position":"OF","headshot":{"url":"http://l.yimg.com/iu/api/res/1.2/CAaVkp7i4ZdyshkVpkk5Kw--/YXBwaWQ9eXZpZGVvO…g--/http://l.yimg.com/j/assets/i/us/sp/v/mlb/players_l/20130405/7934.1.jpg","size":"small"},"is_undroppable":"0","position_type":"B","eligible_positions":["OF","Util"],"draft_analysis":{"average_pick":"6.9","average_round":"1.1","average_cost":"43.8","percent_drafted":"1.00"}}]}], null, 2)

@@ -1,0 +1,15 @@
+extends team
+
+block description
+  p
+    | Includes team key, id, name, url, division ID, logos, and team manager information.
+
+block code
+  | &nbsp;
+  | yf.team.meta(
+  |   team_key,
+
+block sample
+  pre
+    code.json
+      =JSON.stringify({"team_key":"328.l.34014.t.1","team_id":"1","name":"ChicksDigTheLongBall","url":"http://baseball.fantasysports.yahoo.com/b1/34014/1","team_logo":"http://l.yimg.com/dh/ap/fantasy/img/mlb/icon_6_lg.gif","waiver_priority":4,"number_of_moves":"19","number_of_trades":0,"clinched_playoffs":1,"managers":[{"manager_id":"1","nickname":"--hidden--","guid":"RYWP7M53IC626MGOX36ZWCM4FA","is_commissioner":"1"}]}, null, 2)

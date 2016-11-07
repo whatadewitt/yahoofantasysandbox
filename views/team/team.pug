@@ -1,0 +1,18 @@
+extends ../console
+
+block header
+  p
+    | The Team APIs allow you to retrieve information about a team within our fantasy games. The team is the basic unit for keeping track of a roster of players, and can be managed by either one or two managers (the second manager being called a co-manager). With the Team APIs, you can obtain team-related information, like the team name, managers, logos, stats and points, and rosters for particular weeks. Teams only exist in the context of a particular League, although you can request a Team Resource as the base of your URI by using the global team_key. A particular user can only retrieve data about a team if that team is part of a private league of which the user is a member, or if it's in a public league.
+  p
+    | maps to http://fantasysports.yahooapis.com/fantasy/v2/team/{team_key}/{sub_resource}
+
+block inputs
+  .row.form-group
+    .col-sm-2
+      label team_key
+    .col-sm-4
+      input#team_key.form-control(type="text", placeholder="eg. 328.l.34014.t.1")
+    .col-sm-6.desc
+      p
+        | Team key format: {game_key}.l.{league_id}.t.{team_id}
+  block subinputs

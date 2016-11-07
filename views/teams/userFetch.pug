@@ -1,0 +1,47 @@
+extends teams
+
+block description
+  p
+    | Fetch all teams for a logged in user.
+  p
+    | The only required parameter is the callback function.
+
+block code
+  | &nbsp;
+  | yf.teams.userFetch(
+  |   [subresources], // optional
+
+block inputs
+  h4.spacing Subresources (optional)
+  .row
+    .col-sm-2
+      label subresources
+    .col-sm-4.checkbox-group
+      label
+        input(type="checkbox", name="stats")
+        | stats
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="standings")
+        | standings
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="roster")
+        | roster
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="draftresults")
+        | draftresults
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="matchups")
+        | matchups
+
+block sample
+  pre
+    code.json
+      =JSON.stringify([{"player_key":"328.p.6619","player_id":"6619","name":{"full":"Albert Pujols","first":"Albert","last":"Pujols","ascii_first":"Albert","ascii_last":"Pujols"},"editorial_player_key":"mlb.p.6619","editorial_team_key":"mlb.t.3","editorial_team_full_name":"Los Angeles Angels","editorial_team_abbr":"LAA","uniform_number":"5","display_position":"1B","headshot":"http://l.yimg.com/iu/api/res/1.2/iium.CfIaaN.XDy7fB4Reg--/YXBwaWQ9eXZpZGVvO…g--/http://l.yimg.com/j/assets/i/us/sp/v/mlb/players_l/20130405/6619.1.jpg","is_undroppable":"0","position_type":"B","eligible_positions":["1B","CI","DH","IF"]},{"player_key":"341.p.3985","player_id":"3985","name":{"full":"Joe Pavelski","first":"Joe","last":"Pavelski","ascii_first":"Joe","ascii_last":"Pavelski"},"editorial_player_key":"nhl.p.3985","editorial_team_key":"nhl.t.18","editorial_team_full_name":"San Jose Sharks","editorial_team_abbr":"SJ","uniform_number":"8","display_position":"C,LW,RW","headshot":"http://l.yimg.com/iu/api/res/1.2/Dd5dNYTipp8s2GCFVkEnuA--/YXBwaWQ9eXZpZGVvO…0Ng--/http://l.yimg.com/j/assets/i/us/sp/v/nhl/players_l/20130211/3985.jpg","is_undroppable":"0","position_type":"P","eligible_positions":["C","LW","RW"]}], null, 2)

@@ -1,0 +1,27 @@
+extends ../console
+
+block header
+  p
+    | Players on a team are organized into rosters corresponding to certain weeks, in NFL, or certain dates, in MLB, NBA, and NHL. Each player on a roster will be assigned a position if they're in the starting lineup, or will be on the bench. You can only receive credit for stats accumulated by players in your starting lineup.
+  p
+    | Eventually the PUT functionality may be added.
+  p
+    | maps to http://fantasysports.yahooapis.com/fantasy/v2/team/{team_key}/roster/{sub_resource}
+
+block inputs
+  .row.form-group
+    .col-sm-2
+      label team_key
+    .col-sm-4
+      input#team_key.form-control(type="text", placeholder="eg. 328.l.34014.t.1")
+    .col-sm-6.desc
+      p
+        | Team key format: {game_key}.l.{league_id}.t.{team_id}.
+  .row.form-group
+    .col-sm-2
+      label date
+    .col-sm-4
+      input#date.optional.form-control(type="text", placeholder="eg. 10 or 2015-03-12")
+    .col-sm-6.desc
+      p
+        | Date (optional)

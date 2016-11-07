@@ -1,0 +1,51 @@
+extends transactions
+
+block code
+  | &nbsp;
+  | yf.transactions.drop_player(
+  |   league_key,
+  |   team_key,
+  |   player_key,
+  
+block description
+  p
+    | To drop a player from a team you must specify the league, team and player keys, respectively.
+  p
+    | Currently, we can only drop 1 player at a time, but I will update the library to support multiple drops in the near future!
+  p 
+    | You must be authenticated as the team owner drop players from a team. It would appear being league commissioner does not allow you to override this.
+    
+block inputs
+  .row.form-group
+    .col-sm-2
+      label league_key
+    .col-sm-4
+      input#league_key.form-control(type="text", placeholder="eg. 328.l.34014")
+    .col-sm-6.desc
+      p
+        | League key format: {game_key}.l.{league_id}
+  .row.form-group
+    .col-sm-2
+      label team_key
+    .col-sm-4
+      input#team_key.form-control(type="text", placeholder="eg. 328.l.34014.t.1")
+    .col-sm-6.desc
+      p
+        | League key format: {game_key}.l.{league_id}.t.{team_id}
+  .row.form-group
+    .col-sm-2
+      label player_key
+    .col-sm-4
+      input#player_key.form-control(type="text", placeholder="eg. 328.p.6619")
+    .col-sm-6.desc
+      p
+        | Player key format: {game_key}.p.{player_key}
+  .row
+    .col-sm-12
+      p.note
+        | *Note: be careful here, you could end up dropping a player from your team!
+        
+block sample
+  pre
+    code.json
+      =JSON.stringify({"transaction_key":"357.l.161.tr.1504","transaction_id":"1504","type":"drop","status":"successful","timestamp":"1464156358","players":[{"player_key":"357.p.9967","player_id":"9967","name":{"full":"Tyler Wilson","first":"Tyler","last":"Wilson","ascii_first":"Tyler","ascii_last":"Wilson"},"editorial_team_abbr":"Bal","display_position":"SP","position_type":"P","transaction_data":{"type":"drop","source_type":"team","source_team_key":"357.l.161.t.6","source_team_name":"Oceans/ Go! Greinke!","destination_type":"waivers"}}]}, null, 2)

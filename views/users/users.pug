@@ -1,0 +1,16 @@
+extends ../console
+
+block header
+  p
+    | With the Users API, you can obtain information from a collection of teams simultaneously. The teams collection is qualified in the URI by a particular league to obtain information about teams within the league, or by a particular user (and optionally, a game) to obtain information about the teams owned by the user. Each element beneath the Teams Collection will be a Team Resource.
+  p
+    | maps to http://fantasysports.yahooapis.com/fantasy/v2/teams/{sub_resource}
+
+block description
+  p
+    | Fetch user information of the logged-in user.
+
+block sample
+  pre
+    code.json
+      =JSON.stringify([{"player_key":"328.p.6619","player_id":"6619","name":{"full":"Albert Pujols","first":"Albert","last":"Pujols","ascii_first":"Albert","ascii_last":"Pujols"},"editorial_player_key":"mlb.p.6619","editorial_team_key":"mlb.t.3","editorial_team_full_name":"Los Angeles Angels","editorial_team_abbr":"LAA","uniform_number":"5","display_position":"1B","headshot":"http://l.yimg.com/iu/api/res/1.2/iium.CfIaaN.XDy7fB4Reg--/YXBwaWQ9eXZpZGVvO…g--/http://l.yimg.com/j/assets/i/us/sp/v/mlb/players_l/20130405/6619.1.jpg","is_undroppable":"0","position_type":"B","eligible_positions":["1B","CI","DH","IF"]},{"player_key":"341.p.3985","player_id":"3985","name":{"full":"Joe Pavelski","first":"Joe","last":"Pavelski","ascii_first":"Joe","ascii_last":"Pavelski"},"editorial_player_key":"nhl.p.3985","editorial_team_key":"nhl.t.18","editorial_team_full_name":"San Jose Sharks","editorial_team_abbr":"SJ","uniform_number":"8","display_position":"C,LW,RW","headshot":"http://l.yimg.com/iu/api/res/1.2/Dd5dNYTipp8s2GCFVkEnuA--/YXBwaWQ9eXZpZGVvO…0Ng--/http://l.yimg.com/j/assets/i/us/sp/v/nhl/players_l/20130211/3985.jpg","is_undroppable":"0","position_type":"P","eligible_positions":["C","LW","RW"]}], null, 2)

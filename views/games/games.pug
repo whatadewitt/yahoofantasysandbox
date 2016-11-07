@@ -1,0 +1,22 @@
+extends ../console
+
+block header
+  p
+    | With the Games API, you can obtain information from a collection of games simultaneously. Each element beneath the Games Collection will be a Game Resource.
+
+block description
+  p
+    | Fetch specific games {game_key1} and {game_key2}.
+  p
+    | The only required parameters are the game_key(s), and the callback function. If you're only searching for a single game_key, you should probably be using the game resource, but you can pass through the game_key as a string, and not an array.
+  p
+    | The subresources are the different subresources available for a game resource. This is not a required parameter. If you're only searching for a single subresource, you can simply pass through a string indicating that subresource. The "metadata" subresource comes back by default with all games collection requests.
+  p
+    | The filters object are the filters you wish to add to the request. This is not a required parameter. Filters are as follows:
+  ul
+    li is_available (1 to show games currently in season)
+    li game_types (full, pickem-team, pickem-group, pickem-team-list)
+    li game_codes (any valid game codes)
+    li seasons (any valid seasons)
+  p.note
+    | *Please note, I've found that specifying filters and game_keys will return an empty dataset. Not sure why you cannot use both, but you can't...

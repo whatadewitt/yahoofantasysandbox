@@ -1,0 +1,27 @@
+extends users
+
+block code
+  | &nbsp;
+  | yf.users.fetch(
+  |   [subresources], // optional
+
+block inputs
+  h4 Subresources (optional)
+  .row
+    .col-sm-2
+      label subresources
+    .col-sm-4.checkbox-group
+      label
+        input(type="checkbox", name="games")
+        | games
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="leagues")
+        | leagues
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="teams")
+        | teams
+

@@ -1,0 +1,56 @@
+extends teams
+
+block description
+  p
+    | Fetch teams from specific games, using the game keys.
+  p
+    | The only required parameters are the game_key(s), and the callback function. If you're only searching for teams from a single game, you should probably be using the game resource, but you can pass through the game_key as a string, and not an array.
+
+block code
+  | &nbsp;
+  | yf.teams.games(
+  |   [game_keys],
+  |   [subresources], // optional
+
+block inputs
+  .row.form-group
+    .col-sm-2
+      label game_key
+    .col-sm-4
+      input#game_key.form-control(type="text", placeholder="eg. 328")
+    .col-sm-6.desc
+      p
+        | Game key examples: 'mlb', 'nfl', 328 (2014 MLB season), 242 (2010 NFL season)
+  h4.spacing Subresources (optional)
+  .row
+    .col-sm-2
+      label subresources
+    .col-sm-4.checkbox-group
+      label
+        input(type="checkbox", name="stats")
+        | stats
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="standings")
+        | standings
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="roster")
+        | roster
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="draftresults")
+        | draftresults
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="matchups")
+        | matchups
+
+block sample
+  pre
+    code.json
+      =JSON.stringify([{"game_key":"328","game_id":"328","name":"Baseball","code":"mlb","type":"full","url":"http://baseball.fantasysports.yahoo.com/b1","season":"2014","teams":[{"team_key":"328.l.24281.t.7","team_id":"7","name":"ChicksDigTheLongBall","is_owned_by_current_login":1,"url":"http://baseball.fantasysports.yahoo.com/archive/mlb/2014/24281/7","team_logo":"https://i.imgur-ysports.com/PhEXA9Ry.jpg","waiver_priority":6,"number_of_moves":"18","number_of_trades":0,"managers":[{"manager_id":"7","nickname":"[REDACTED]","guid":"RYWP7M53IC626MGOX36ZWCM4FA","is_current_login":"1","email":"[REDACTED]","image_url":"https://s.yimg.com/wv/images/8ed931b36884df369fae061f758e1c43_64.jpg"}],"stats":{"coverage_type":"season","season":"2014","stats":[{"stat_id":"60","value":""},{"stat_id":"1","value":"1628"},{"stat_id":"7","value":"787"},{"stat_id":"8","value":"1633"},{"stat_id":"10","value":"309"},{"stat_id":"11","value":"37"},{"stat_id":"12","value":"180"},{"stat_id":"13","value":"737"},{"stat_id":"16","value":"115"},{"stat_id":"18","value":"587"},{"stat_id":"21","value":"1148"},{"stat_id":"50","value":"1404.0"},{"stat_id":"24","value":"393"},{"stat_id":"28","value":"81"},{"stat_id":"29","value":"77"},{"stat_id":"30","value":"5"},{"stat_id":"31","value":"2"},{"stat_id":"32","value":"67"},{"stat_id":"33","value":"4212"},{"stat_id":"34","value":"1311"},{"stat_id":"37","value":"553"},{"stat_id":"39","value":"415"},{"stat_id":"42","value":"1244"},{"stat_id":"48","value":"27"}]}},{"team_key":"328.l.34014.t.1","team_id":"1","name":"ChicksDigTheLongBall","is_owned_by_current_login":1,"url":"http://baseball.fantasysports.yahoo.com/archive/mlb/2014/34014/1","team_logo":"http://l.yimg.com/dh/ap/fantasy/img/mlb/icon_6_lg.gif","waiver_priority":4,"number_of_moves":"19","number_of_trades":0,"clinched_playoffs":1,"managers":[{"manager_id":"1","nickname":"[REDACTED]","guid":"RYWP7M53IC626MGOX36ZWCM4FA","is_commissioner":"1","is_current_login":"1","email":"[REDACTED]","image_url":"https://s.yimg.com/wv/images/8ed931b36884df369fae061f758e1c43_64.jpg"}],"stats":{"coverage_type":"season","season":"2014","stats":[{"stat_id":"60","value":""},{"stat_id":"7","value":"676"},{"stat_id":"12","value":"126"},{"stat_id":"13","value":"623"},{"stat_id":"16","value":"126"},{"stat_id":"3","value":".275"},{"stat_id":"50","value":"1555.0"},{"stat_id":"28","value":"101"},{"stat_id":"32","value":"67"},{"stat_id":"42","value":"1264"},{"stat_id":"26","value":"3.56"},{"stat_id":"27","value":"1.20"}]}}]}], null, 2)

@@ -1,0 +1,102 @@
+extends games
+
+block description
+  p
+    | Fetch all games for the logged in user. Requires authentication.
+  p
+    | The subresources are the different subresources available for a game resource. This is not a required parameter. If you're only searching for a single subresource, you can simply pass through a string indicating that subresource. The "metadata" subresource comes back by default with all games collection requests.
+  p
+    | The filters object are the filters you wish to add to the request. This is not a required parameter. Filters are as follows:
+  ul
+    li is_available (1 to show games currently in season)
+    li game_types (full, pickem-team, pickem-group, pickem-team-list)
+    li game_codes (any valid game codes)
+    li seasons (any valid seasons)
+
+block code
+  | &nbsp;
+  | yf.games.user(
+  |   {filters}, // optional
+  |   [subresources], // optional
+
+block inputs
+  h4 Filters (optional)
+  .row
+    .col-sm-2
+      label is_available
+    .col-sm-4
+      input#is_available.filter.form-control(type="text", placeholder="eg. 1")
+    .col-sm-6.desc
+      p
+        | 1 to only show games currently in season
+  .row
+    .col-sm-2
+      label game_types
+    .col-sm-4
+      input#game_types.filter.form-control(type="text", placeholder="eg. full")
+    .col-sm-6.desc
+      p
+        | full, pickem-team, pickem-group, pickem-team-list
+  .row
+    .col-sm-2
+      label game_codes
+    .col-sm-4
+      input#game_codes.filter.form-control(type="text", placeholder="eg. nfl, mlb")
+    .col-sm-6.desc
+      p
+        | Any valid game codes. Not necessarily useful when entering game keys.
+  .row
+    .col-sm-2
+      label seasons
+    .col-sm-4
+      input#seasons.filter.form-control(type="text", placeholder="eg. 2011, 2012")
+    .col-sm-6.desc
+      p
+        | Any valid seasons
+  h4.spacing Subresources (optional)
+  .row
+    .col-sm-2
+      label subresources
+    .col-sm-4.checkbox-group
+      label
+        input(type="checkbox", name="game_weeks")
+        | game_weeks
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="leagues")
+        | leagues
+  //- .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="players")
+        | players
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="stat_categories")
+        | stat_categories
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="position_types")
+        | position_types
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="roster_positions")
+        | roster_positions
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="teams")
+        | teams
+    .col-sm-6.desc
+      p
+        | note: "teams" subresource only available in the games collection for specific users
+
+
+block sample
+  pre
+    code.json
+      =JSON.stringify([{"game_key":"308","game_id":"308","name":"Baseball","code":"mlb","type":"full","url":"http://baseball.fantasysports.yahoo.com/b1","season":"2013","leagues":[{"league_key":"308.l.5853","league_id":"5853","name":"FKL Baseball - Season VII","url":"http://baseball.fantasysports.yahoo.com/archive/mlb/2013/5853","league_chat_id":"","draft_status":"postdraft","num_teams":13,"edit_key":"2015-02-04","weekly_deadline":"intraday","league_update_timestamp":"1380528581","scoring_type":"point","league_type":"private","renew":"268_26677","renewed":"328_24281","short_invitation_url":false,"is_pro_league":"0","start_date":"2013-03-31","end_date":"2013-09-29","is_finished":1},{"league_key":"308.l.51222","league_id":"51222","name":"Freddy Beach Baseball","url":"http://baseball.fantasysports.yahoo.com/archive/mlb/2013/51222","password":"fantasyb","league_chat_id":"","draft_status":"postdraft","num_teams":12,"edit_key":"2015-02-04","weekly_deadline":"intraday","league_update_timestamp":"1380528992","scoring_type":"head","league_type":"private","renew":"268_46504","renewed":"328_34014","short_invitation_url":false,"is_pro_league":"0","current_week":"25","start_week":"1","start_date":"2013-03-31","end_week":"25","end_date":"2013-09-29","is_finished":1}],"teams":[{"team_key":"308.l.5853.t.2","team_id":"2","name":"ChicksDigTheLongBall","is_owned_by_current_login":1,"url":"http://baseball.fantasysports.yahoo.com/archive/mlb/2013/5853/2","team_logo":"https://i.imgur-ysports.com/PhEXA9Ry.jpg","waiver_priority":8,"number_of_moves":"20","number_of_trades":"3","managers":[{"manager_id":"2","nickname":"[REDACTED]","guid":"RYWP7M53IC626MGOX36ZWCM4FA","is_current_login":"1","email":"[REDACTED]","image_url":"https://s.yimg.com/wv/images/8ed931b36884df369fae061f758e1c43_64.jpg"}]},{"team_key":"308.l.51222.t.1","team_id":"1","name":"ChicksDigTheLongBall","is_owned_by_current_login":1,"url":"http://baseball.fantasysports.yahoo.com/archive/mlb/2013/51222/1","team_logo":"http://l.yimg.com/dh/ap/fantasy/img/mlb/icon_6_lg.gif","waiver_priority":9,"number_of_moves":"31","number_of_trades":"1","clinched_playoffs":1,"managers":[{"manager_id":"1","nickname":"[REDACTED]","guid":"RYWP7M53IC626MGOX36ZWCM4FA","is_commissioner":"1","is_current_login":"1","email":"[REDACTED]","image_url":"https://s.yimg.com/wv/images/8ed931b36884df369fae061f758e1c43_64.jpg"}]}]},{"game_key":"321","game_id":"321","name":"Hockey","code":"nhl","type":"full","url":"http://hockey.fantasysports.yahoo.com/hockey","season":"2013","leagues":[{"league_key":"321.l.63055","league_id":"63055","name":"theREDleague","url":"http://hockey.fantasysports.yahoo.com/archive/nhl/2013/63055","password":"","league_chat_id":"","draft_status":"postdraft","num_teams":11,"edit_key":"2015-02-04","weekly_deadline":"intraday","league_update_timestamp":"1397456678","scoring_type":"point","league_type":"private","renew":"","renewed":"341_21063","short_invitation_url":"http://y.ahoo.it/xedvzlLA","is_pro_league":"0","start_date":"2013-10-01","end_date":"2014-04-13","is_finished":1}],"teams":[{"team_key":"321.l.63055.t.1","team_id":"1","name":"Kane't Get Enough","is_owned_by_current_login":1,"url":"http://hockey.fantasysports.yahoo.com/archive/nhl/2013/63055/1","team_logo":"https://i.imgur-ysports.com/PhEXA9Ry.jpg","waiver_priority":8,"number_of_moves":"17","number_of_trades":"3","managers":[{"manager_id":"1","nickname":"[REDACTED]","guid":"RYWP7M53IC626MGOX36ZWCM4FA","is_commissioner":"1","is_current_login":"1","email":"[REDACTED]","image_url":"https://s.yimg.com/wv/images/8ed931b36884df369fae061f758e1c43_64.jpg"}]}]}], null, 2)

@@ -1,0 +1,15 @@
+extends team
+
+block description
+  p
+    | Team rank, wins, losses, ties, and winning percentage (as well as divisional data if applicable).
+
+block code
+  | &nbsp;
+  | yf.team.standings(
+  |   team_key,
+
+block sample
+  pre
+    code.json
+      =JSON.stringify({"team_key":"328.l.34014.t.1","team_id":"1","name":"ChicksDigTheLongBall","url":"http://baseball.fantasysports.yahoo.com/b1/34014/1","team_logo":"http://l.yimg.com/dh/ap/fantasy/img/mlb/icon_6_lg.gif","waiver_priority":4,"number_of_moves":"19","number_of_trades":0,"clinched_playoffs":1,"managers":[{"manager_id":"1","nickname":"--hidden--","guid":"RYWP7M53IC626MGOX36ZWCM4FA","is_commissioner":"1"}],"standings":{"rank":7,"outcome_totals":{"wins":"103","losses":"97","ties":"20","percentage":".514"},"games_back":"27.5"}}, null, 2)

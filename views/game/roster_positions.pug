@@ -1,0 +1,15 @@
+extends game
+
+block description
+  p
+    | Subresource to provide a detailed description of all roster positions in a game.
+
+block code
+  | &nbsp;
+  | yf.game.roster_positions(
+  |   game_key,
+
+block sample
+  pre
+    code.json
+      =JSON.stringify({"game_key":"341","game_id":"341","name":"Hockey","code":"nhl","type":"full","url":"http://hockey.fantasysports.yahoo.com/hockey","season":"2014","roster_positions":[{"position":"C","abbreviation":"C","display_name":"Center","position_type":"P"},{"position":"LW","abbreviation":"LW","display_name":"Left Winger","position_type":"P"},{"position":"RW","abbreviation":"RW","display_name":"Right Winger","position_type":"P"},{"position":"W","abbreviation":"W","display_name":"Winger","position_type":"P"},{"position":"F","abbreviation":"F","display_name":"Forward","position_type":"P"},{"position":"D","abbreviation":"D","display_name":"Defenseman","position_type":"P"},{"position":"Util","abbreviation":"Util","display_name":"Utility","position_type":"P"},{"position":"G","abbreviation":"G","display_name":"Goalie","position_type":"G"},{"position":"BN","abbreviation":"BN","display_name":"Bench","is_bench":1},{"position":"IR","abbreviation":"IR","display_name":"Injured Reserve","is_disabled_list":1},{"position":"IR+","abbreviation":"IR+","display_name":"IR or Day-to-Day"},{"position":"NA","abbreviation":"NA","display_name":"Not Active"}]}, null, 2)

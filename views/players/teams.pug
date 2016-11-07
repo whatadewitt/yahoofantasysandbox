@@ -1,0 +1,66 @@
+extends players
+
+block description
+  p
+    | Fetch all players from the teams {team_key1} and {team_key2}.
+  p
+    | The only required parameters are the team_key(s), and the callback function.
+  p
+    | Not all filters are available within the players.teams context.
+
+block code
+  | &nbsp;
+  | yf.players.teams(
+  |   [team_keys],
+  |   {filters}, // optional
+  |   [subresources], // optional
+
+block inputs
+  .row.form-group
+    .col-sm-2
+      label team_key
+    .col-sm-4
+      input#team_key.form-control(type="text", placeholder="eg. 328.l.34014.t.1")
+    .col-sm-6.desc
+      p
+        | Team key format: {game_key}.l.{league_key}.t.{team_key}
+  h4.spacing Filters (optional)
+  .row
+    .col-sm-2
+      label start
+    .col-sm-4
+      input#start.filter.form-control(type="text", placeholder="eg. 0")
+    .col-sm-6.desc
+      p
+        | first record to start from
+  .row
+    .col-sm-2
+      label count
+    .col-sm-4
+      input#count.filter.form-control(type="text", placeholder="eg. 15")
+    .col-sm-6.desc
+      p
+        | number of results to retrieve
+  h4.spacing Subresources (optional)
+  .row
+    .col-sm-2
+      label subresources
+    .col-sm-4.checkbox-group
+      label
+        input(type="checkbox", name="stats")
+        | stats
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="percent_owned")
+        | percent_owned
+  .row
+    .col-sm-4.col-sm-offset-2.checkbox-group
+      label
+        input(type="checkbox", name="draft_analysis")
+        | draft_analysis
+
+block sample
+  pre
+    code.json
+      =JSON.stringify([{"team_key":"328.l.34014.t.1","team_id":"1","name":"ChicksDigTheLongBall","url":"http://baseball.fantasysports.yahoo.com/archive/mlb/2014/34014/1","team_logo":"http://l.yimg.com/dh/ap/fantasy/img/mlb/icon_6_lg.gif","waiver_priority":4,"number_of_moves":"19","number_of_trades":0,"clinched_playoffs":1,"managers":[{"manager_id":"1","nickname":"--hidden--","guid":"RYWP7M53IC626MGOX36ZWCM4FA","is_commissioner":"1"}],"players":[{"player_key":"328.p.5763","player_id":"5763","name":{"full":"Bartolo Colón","first":"Bartolo","last":"Colón","ascii_first":"Bartolo","ascii_last":"Colon"},"editorial_player_key":"mlb.p.5763","editorial_team_key":"mlb.t.21","editorial_team_full_name":"New York Mets","editorial_team_abbr":"NYM","uniform_number":"40","display_position":"SP","headshot":{"url":"http://l.yimg.com/iu/api/res/1.2/eEfOghjyp_ulwInr12a.pQ--/YXBwaWQ9eXZpZGVvO…g--/http://l.yimg.com/j/assets/i/us/sp/v/mlb/players_l/20130405/5763.1.jpg","size":"small"},"is_undroppable":"0","position_type":"P","eligible_positions":["SP"],"draft_analysis":{"average_pick":"228.7","average_round":"20.7","average_cost":"1.5","percent_drafted":"0.43"}},{"player_key":"328.p.6525","player_id":"6525","name":{"full":"Mark Buehrle","first":"Mark","last":"Buehrle","ascii_first":"Mark","ascii_last":"Buehrle"},"editorial_player_key":"mlb.p.6525","editorial_team_key":"mlb.t.14","editorial_team_full_name":"Toronto Blue Jays","editorial_team_abbr":"Tor","uniform_number":"56","display_position":"SP","headshot":{"url":"http://l.yimg.com/iu/api/res/1.2/i2GmbD71kkgSKCcpIktTkQ--/YXBwaWQ9eXZpZGVvO…g--/http://l.yimg.com/j/assets/i/us/sp/v/mlb/players_l/20130405/6525.1.jpg","size":"small"},"is_undroppable":"0","position_type":"P","eligible_positions":["SP"],"draft_analysis":{"average_pick":"201.4","average_round":"18.0","average_cost":"2.0","percent_drafted":"0.11"}},{"player_key":"328.p.7066","player_id":"7066","name":{"full":"José Reyes","first":"José","last":"Reyes","ascii_first":"Jose","ascii_last":"Reyes"},"editorial_player_key":"mlb.p.7066","editorial_team_key":"mlb.t.14","editorial_team_full_name":"Toronto Blue Jays","editorial_team_abbr":"Tor","uniform_number":"7","display_position":"SS","headshot":{"url":"http://l.yimg.com/iu/api/res/1.2/NvuJPYFTGVZA26PUBl9HJg--/YXBwaWQ9eXZpZGVvO…g--/http://l.yimg.com/j/assets/i/us/sp/v/mlb/players_l/20130405/7066.1.jpg","size":"small"},"is_undroppable":"0","position_type":"B","eligible_positions":["SS","Util"],"draft_analysis":{"average_pick":"45.0","average_round":"4.6","average_cost":"24.1","percent_drafted":"1.00"}}]}], null, 2)

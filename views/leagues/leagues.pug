@@ -1,0 +1,13 @@
+extends ../console
+
+block header
+  p
+    | With the Leagues API, you can obtain information from a collection of leagues simultaneously. Each element beneath the Leagues Collection will be a League Resource.
+
+block description
+  p
+    | Fetch specific leagues {league_key1} and {league_key2}.
+  p
+    | The only required parameters are the league_key(s), and the callback function. If you're only searching for a single league_key, you should probably be using the league resource, but you can pass through the league_key as a string, and not an array.
+  p
+    | The subresources are the different subresources available for a league resource. This is not a required parameter. If you're only searching for a single subresource, you can simply pass through a string indicating that subresource. The "metadata" subresource comes back by default with all games collection requests.
