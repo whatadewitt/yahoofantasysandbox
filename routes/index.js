@@ -50,7 +50,9 @@ exports.getData = function(req, res) {
 
   var callback = function callback(err, data) {
     if (err) {
-      if ('token_expired' === err.reason) {
+      var reason = String(err.description).match( /"(.*?)"/ );
+      
+      if ( reason && 'token_expired' === reason ) {
         var options = {
           url: 'https://api.login.yahoo.com/oauth2/get_token',
           method: 'post',
@@ -66,7 +68,7 @@ exports.getData = function(req, res) {
 
         request(options, function (error, response, body) {
           if ( error ) {
-            res.json({error: "Couldn't renew token..."})
+            res.json( { error: "Couldn't renew token..." } );
           }
 
           yf.setUserToken(body.access_token);
@@ -104,6 +106,7 @@ exports.getData = function(req, res) {
       // could be key, another key, callback too...
     // 2 - would be key or filters or subs, callback
     // 1 - callback only...
-
+  
+  console.log(resource, subresource, args);
   yf[resource][subresource].apply(yf[resource], args);
 };

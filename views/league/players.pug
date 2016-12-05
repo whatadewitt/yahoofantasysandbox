@@ -1,0 +1,37 @@
+extends league
+
+block description
+  p
+    | Subresource to retrieve league eligible players.
+  //- p
+  //-   | Optional "week" parameter added in v0.4.3
+
+block code
+  | &nbsp;
+  | yf.league.players(
+  |   league_key,
+  |   [player_key],
+  |   week, // optional
+
+block subinputs
+  .row.form-group
+    .col-sm-2
+      label player_key
+    .col-sm-4
+      input#player_key.optional.form-control(type="text", placeholder="eg. mlb.p.8861")
+    .col-sm-6.desc
+      p
+        | Player key format: {game_key}.p.{player_key}
+  .row.form-group
+    .col-sm-2
+      label week
+    .col-sm-4
+      input#week.optional.form-control(type="text", placeholder="eg. 10")
+    .col-sm-6.desc
+      p
+        | Week (optional)
+
+block sample
+  pre
+    code.json
+      =JSON.stringify({}, null, 2)
