@@ -37,6 +37,10 @@ block content
     .container
       h2 Changelog
       
+      h4 2.0.2
+      ul
+        li
+          | Fixed a bug where "mapTeamPoints" helper function was not defining "self". Thanks <a href="https://github.com/platky" target="_blank">platky</a>!
       h4 2.0.1
       ul
         li
@@ -58,7 +62,7 @@ block content
         li
           | Breaking changes
         li
-          | Fixed NFL scoreboard/matchups bug (<a href="https://github.com/whatadewitt/yfsapi/issues/19">Issue #19</a>)
+          | Fixed NFL scoreboard/matchups bug (<a href="https://github.com/whatadewitt/yfsapi/issues/19" target="_blank">Issue #19</a>)
         li
           | In fixing this bug I realized that my "team" set up was really only useful for MLB fantasy, so I rewrote team mapping to work better across all sports and give additional details that weren't previously reported. This will cause errors if you are using the team.manager attribute in your code.
       h4 0.5.3
