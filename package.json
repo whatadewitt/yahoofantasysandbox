@@ -1,6 +1,6 @@
 {
   "name": "fantasysandbox",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -22,6 +22,6 @@
     "pug": "~2.0.0-beta6",
     "request": "^2.78.0",
     "serve-favicon": "~2.3.0",
-    "yahoo-fantasy": "2.0.3"
+    "yahoo-fantasy": "2.0.4"
   }
 }
