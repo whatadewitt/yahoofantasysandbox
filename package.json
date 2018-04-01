@@ -25,6 +25,6 @@
     "yahoo-fantasy": "3.0.0"
   },
   "devDependencies": {
-    "connect-redis": "^3.3.2"
+    "connect-redis": "^3.3.3"
   }
 }
