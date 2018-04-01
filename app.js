@@ -82,10 +82,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   session({
-    store: new RedisStore({
-      host: process.env.REDIS_HOST || require("./conf.js").REDIS_HOST,
-      port: process.env.REDIS_PORT || require("./conf.js").REDIS_PORT
-    }),
+    // store: new RedisStore({
+    //   host: process.env.REDIS_HOST || require("./conf.js").REDIS_HOST,
+    //   port: process.env.REDIS_PORT || require("./conf.js").REDIS_PORT
+    // }),
     secret: process.env.SESSION_SECRET || require("./conf.js").SESSION_SECRET,
     resave: false,
     saveUninitialized: true
