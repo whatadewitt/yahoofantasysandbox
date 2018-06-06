@@ -8,6 +8,17 @@ block code
   | &nbsp;
   | yf.team.stats(
   |   team_key,
+  |   date_or_week, // optional
+
+block subinputs
+  .row.form-group
+    .col-sm-2
+      label date
+    .col-sm-4
+      input#date.optional.form-control(type="text", placeholder="eg. 10 or 2015-03-12")
+    .col-sm-6.desc
+      p
+        | Date or Week (optional)
 
 block sample
   pre
