@@ -7,7 +7,7 @@
   },
   "subdomain": "fbbl",
   "engines": {
-    "node": "6.10.x"
+    "node": "8.x.x"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
