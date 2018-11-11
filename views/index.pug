@@ -23,7 +23,7 @@ block content
     p
       | In version 2.0, OAuth2.0 became the only way to communicate with the Yahoo! API. This was done for a number of reasons, but I do believe this will make it a better module in terms of both security, and should make it easier to use. The OAuth token from Yahoo! lasts for only an hour, so if the response returned from Yahoo! is an error, you'll have to refresh the authentication token from within your app.
     p
-      | You can view the source code for this project on <a href="https://github.com/whatadewitt/yahoofantasysandbox/" target="_blank">Github</a>. At the very least it will give you an idea of how you can use this module. 
+      | You can view the source code for this project on <a href="https://github.com/whatadewitt/yahoofantasysandbox/" target="_blank" rel="noopener noreferrer">Github</a>. At the very least it will give you an idea of how you can use this module. 
 
     h2 Licence
     p
@@ -31,23 +31,30 @@ block content
 
     h2 Bugs &amp; Issues
     p
-      | This project will always very much be a work in progress, and I'm not perfect. It's a labour of love and there will most certainly be bugs. Please report any issues via the <a href="https://github.com/whatadewitt/yfsapi/issues" target="_blank">GitHub issues page</a>.
+      | This project will always very much be a work in progress, and I'm not perfect. It's a labour of love and there will most certainly be bugs. Please report any issues via the <a href="https://github.com/whatadewitt/yfsapi/issues" target="_blank" rel="noopener noreferrer">GitHub issues page</a>.
 
   .dark.section
     .container
       h2 Changelog
       
+h4 3.1.0
+      ul
+        li
+          | Introduced `promise` based flow for all endpoints as an alternative to callbacks. (Thanks <a href="https://github.com/ryus08" target="_blank" rel="noopener noreferrer">Marois</a>)
+        li
+          | Will update the sandbox here to show that flow as time allows!  
+
       h4 3.0.4
       ul
         li
-          | Fixed a bug in the players.league collection call where it was trying to use split on an array... (<a href="https://github.com/whatadewitt/yfsapi/pull/46" target="_blank">Issue #46</a>)
+          | Fixed a bug in the players.league collection call where it was trying to use split on an array... (<a href="https://github.com/whatadewitt/yfsapi/pull/46" target="_blank" rel="noopener noreferrer">Issue #46</a>)
 
       h4 3.0.3
       ul
         li
           | Added the ability to specify a date or week when querying the <a href="/resource/user/game_leagues">team.stats</a> resource.
         li
-          | Unit test fixes (<a href="https://github.com/whatadewitt/yfsapi/pull/42" target="_blank">Issue #42</a>). Thanks <a href="https://github.com/ryus08" target="_blank">Marios</a>!
+          | Unit test fixes (<a href="https://github.com/whatadewitt/yfsapi/pull/42" target="_blank" rel="noopener noreferrer">Issue #42</a>). Thanks <a href="https://github.com/ryus08" target="_blank" rel="noopener noreferrer">Marios</a>!
         li
           | Updated "vulnerable" dependencies.
       h4 3.0.2
@@ -77,7 +84,7 @@ block content
       h4 2.0.2
       ul
         li
-          | Fixed a bug where "mapTeamPoints" helper function was not defining "self". Thanks <a href="https://github.com/platky" target="_blank">platky</a>!
+          | Fixed a bug where "mapTeamPoints" helper function was not defining "self". Thanks <a href="https://github.com/platky" target="_blank" rel="noopener noreferrer">platky</a>!
       h4 2.0.1
       ul
         li
@@ -99,17 +106,17 @@ block content
         li
           | Breaking changes
         li
-          | Fixed NFL scoreboard/matchups bug (<a href="https://github.com/whatadewitt/yfsapi/issues/19" target="_blank">Issue #19</a>)
+          | Fixed NFL scoreboard/matchups bug (<a href="https://github.com/whatadewitt/yfsapi/issues/19" target="_blank" rel="noopener noreferrer">Issue #19</a>)
         li
           | In fixing this bug I realized that my "team" set up was really only useful for MLB fantasy, so I rewrote team mapping to work better across all sports and give additional details that weren't previously reported. This will cause errors if you are using the team.manager attribute in your code.
       h4 0.5.3
       ul
         li
-          | Fixed a bug where leagueFetch was throwing an error, thanks <a href="https://github.com/danielspector" target="_blank">danielspector</a>!
+          | Fixed a bug where leagueFetch was throwing an error, thanks <a href="https://github.com/danielspector" target="_blank" rel="noopener noreferrer">danielspector</a>!
       h4 0.5.2
       ul
         li
-          | Fixed a bug where player stats by week url was not being created properly, thanks <a href="https://github.com/withsmilo" target="_blank">withsmilo</a>!
+          | Fixed a bug where player stats by week url was not being created properly, thanks <a href="https://github.com/withsmilo" target="_blank" rel="noopener noreferrer">withsmilo</a>!
       h4 0.5.1
       ul
         li
@@ -121,7 +128,7 @@ block content
       h4 0.4.4
       ul
         li
-          | Fixed a bug in player.draft_analysis, thanks <a href="https://github.com/githubsmilo" target="_blank">githubsmilo</a>!
+          | Fixed a bug in player.draft_analysis, thanks <a href="https://github.com/githubsmilo" target="_blank" rel="noopener noreferrer">githubsmilo</a>!
       h4 0.4.3
       ul
         li
@@ -152,7 +159,7 @@ block content
       h4 0.3.1
       ul
         li
-          | Additional player attributes added, thanks <a href="https://github.com/ryus08" target="_blank">ryus08</a>!
+          | Additional player attributes added, thanks <a href="https://github.com/ryus08" target="_blank" rel="noopener noreferrer">ryus08</a>!
 
       h4 0.3.0
       ul
