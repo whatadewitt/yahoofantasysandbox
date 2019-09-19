@@ -12,6 +12,7 @@ block code
   |   league_key,
   |   [player_key],
   |   week, // optional
+  //- |   [subresources], // optional
 
 block subinputs
   .row.form-group
@@ -30,8 +31,31 @@ block subinputs
     .col-sm-6.desc
       p
         | Week (optional)
+  //- h4.spacing Subresources (optional)
+  //- .row
+  //-   .col-sm-2
+  //-     label subresources
+  //-   .col-sm-4.checkbox-group
+  //-     label
+  //-       input(type="checkbox", name="stats")
+  //-       | stats
+  //- .row
+  //-   .col-sm-4.col-sm-offset-2.checkbox-group
+  //-     label
+  //-       input(type="checkbox", name="ownership")
+  //-       | ownership
+  //- .row
+  //-   .col-sm-4.col-sm-offset-2.checkbox-group
+  //-     label
+  //-       input(type="checkbox", name="percent_owned")
+  //-       | percent_owned
+  //- .row
+  //-   .col-sm-4.col-sm-offset-2.checkbox-group
+  //-     label
+  //-       input(type="checkbox", name="draft_analysis")
+  //-       | draft_analysis
 
 block sample
   pre
     code.json
-      =JSON.stringify({}, null, 2)
+      =JSON.stringify({"league_key":"388.l.4023","league_id":"4023","name":"Freddy Beach Baseball","url":"https://baseball.fantasysports.yahoo.com/b1/4023","logo_url":"https://ct.yimg.com/cy/8642/28008092841_fff9e0c2d4_192sq.jpg?ct=fantasy","password":"","draft_status":"postdraft","num_teams":12,"edit_key":"2019-09-18","weekly_deadline":"intraday","league_update_timestamp":"1568792177","scoring_type":"head","league_type":"private","renew":"378_2487","renewed":"","iris_group_chat_id":"RWZ3CRIXYRHPXMAVNE4PVZLZNY","short_invitation_url":"https://baseball.fantasysports.yahoo.com/b1/4023/invitation?key=62e534e1574b8306&ikey=37f690ff55b50507","allow_add_to_dl_extra_pos":1,"is_pro_league":"0","is_cash_league":"0","current_week":24,"start_week":"1","start_date":"2019-03-20","end_week":"24","end_date":"2019-09-22","game_code":"mlb","season":"2019","players":[{"player_key":"388.p.8575","player_id":"8575","name":{"full":"Michael Brantley","first":"Michael","last":"Brantley","ascii_first":"Michael","ascii_last":"Brantley"},"editorial_player_key":"mlb.p.8575","editorial_team_key":"mlb.t.18","editorial_team_full_name":"Houston Astros","editorial_team_abbr":"Hou","uniform_number":"23","display_position":"OF","headshot":{"url":"https://s.yimg.com/iu/api/res/1.2/JPIK98NwOTMuoGBZFDN_iw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03222019/8575.1.png","size":"small"},"image_url":"https://s.yimg.com/iu/api/res/1.2/JPIK98NwOTMuoGBZFDN_iw--~C/YXBwaWQ9eXNwb3J0cztjaD0yMzM2O2NyPTE7Y3c9MTc5MDtkeD04NTc7ZHk9MDtmaT11bGNyb3A7aD02MDtxPTEwMDt3PTQ2/https://s.yimg.com/xe/i/us/sp/v/mlb_cutout/players_l/03222019/8575.1.png","is_undroppable":"0","position_type":"B","primary_position":"OF","eligible_positions":["OF","Util"],"player_stats":{"coverage_type":"season","coverage_value":"2019","stats":[{"stat_id":"60","value":"175/549"},{"stat_id":"7","value":"86"},{"stat_id":"12","value":"21"},{"stat_id":"13","value":"86"},{"stat_id":"16","value":"3"},{"stat_id":"3","value":".319"}]},"player_advanced_stats":{"coverage_type":"season","coverage_value":"2019","stats":[{"stat_id":"1035","value":"15.1"},{"stat_id":"1008","value":"1.6"},{"stat_id":"1013","value":".329"},{"stat_id":"1002","value":".193"},{"stat_id":"1001","value":"88.3"},{"stat_id":"1014","value":".373"},{"stat_id":"1015","value":"27.5"},{"stat_id":"1011","value":"100"},{"stat_id":"1005","value":"230"},{"stat_id":"1006","value":"225"},{"stat_id":"1009","value":"46.2"},{"stat_id":"1007","value":"139"},{"stat_id":"1010","value":"28.5"},{"stat_id":"1016","value":"136"},{"stat_id":"1004","value":"3.64"},{"stat_id":"1039","value":"60.0"},{"stat_id":"1012","value":".129"},{"stat_id":"1003","value":"18"},{"stat_id":"1017","value":"-5.64"},{"stat_id":"1040","value":"2.8"},{"stat_id":"1041","value":"0.0"},{"stat_id":"1042","value":"1.90"}]}}]}, null, 2)

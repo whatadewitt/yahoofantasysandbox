@@ -57,24 +57,32 @@ $(document).on("ready", function() {
         data.filters = JSON.stringify(data.filters);
       }
 
-      console.log(data);
+      // console.log(data);
+      var error = false;
       $.get(
         "/data/" + resource + "/" + subresource,
         data,
         function(res) {
-          console.log(JSON.stringify(res));
           $(".data-block h2").text("Output");
           $(".data-block .json").text(JSON.stringify(res, null, 2));
+          console.log(JSON.stringify(res));
+        },
+        "json"
+      )
+        .fail(function(res) {
+          $(".data-block h2").text("Output");
+          $(".data-block .json").text(
+            JSON.stringify(res.responseJSON, null, 2)
+          );
+        })
+        .always(function() {
           $(".json").each(function(i, block) {
             hljs.highlightBlock(block);
           });
           $(window).scrollTo($(".data-block"), 800);
-
           submitting = false;
           $(".loading").toggle();
-        },
-        "json"
-      );
+        });
     }
   }
 

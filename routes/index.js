@@ -32,11 +32,19 @@ exports.console = function(req, res) {
 };
 
 exports.getData = function(req, res) {
-  var func;
   var yf = req.app.yf,
     resource = req.params.resource,
     subresource = req.params.subresource,
     query = req.query;
+
+  if (!req.user) {
+    return res.json(
+      {
+        error: "You must log in in order to request data"
+      },
+      401
+    );
+  }
 
   // make sure that user token is set (in case of server restart)
   yf.setUserToken(req.user.accessToken);
@@ -53,10 +61,12 @@ exports.getData = function(req, res) {
   var args = Object.map(query);
 
   var callback = function callback(err, data) {
+    console.profileEnd(`${resource}-${subresource}`);
     if (err) {
-      var reason = String(err.description)
-        .match(/"(.*?)"/)
-        .shift();
+      console.log("ERR", err);
+      var reason = err.description;
+      // .match(/"(.*?)"/)
+      // .shift();
 
       if (reason && '"token_expired"' === reason) {
         var options = {
@@ -88,7 +98,7 @@ exports.getData = function(req, res) {
           yf[resource][subresource].apply(yf[resource], args);
         });
       } else {
-        res.json(err);
+        res.json({ error: reason });
       }
     } else {
       res.json(data);
@@ -115,5 +125,6 @@ exports.getData = function(req, res) {
   // 1 - callback only...
 
   console.log(resource, subresource, args);
+  console.profile(`${resource}-${subresource}`);
   yf[resource][subresource].apply(yf[resource], args);
 };
