@@ -36,10 +36,7 @@ passport.use(
     },
     function(accessToken, refreshToken, params, profile, done) {
       var options = {
-        url:
-          "https://social.yahooapis.com/v1/user/" +
-          params.xoauth_yahoo_guid +
-          "/profile?format=json",
+        url: "https://api.login.yahoo.com/openid/v1/userinfo",
         method: "get",
         json: true,
         auth: {
@@ -50,9 +47,9 @@ passport.use(
       request(options, function(error, response, body) {
         if (!error && response.statusCode == 200) {
           var userObj = {
-            id: body.profile.guiid,
-            name: body.profile.nickname,
-            avatar: body.profile.image.imageUrl,
+            id: body.sub,
+            name: body.nickname,
+            avatar: body.profile_images.image64,
             accessToken: accessToken,
             refreshToken: refreshToken
           };
