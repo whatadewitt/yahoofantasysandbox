@@ -6,6 +6,7 @@
 
 const app = require("../app");
 const debug = require("debug")("yahoofantasysandbox:server");
+const http = require("http");
 const https = require("https");
 const path = require("path");
 const fs = require("fs");
@@ -26,7 +27,7 @@ app.set("port", port);
 let server;
 
 if (process.env.IS_HEROKU) {
-  server = https.createServer(app);
+  server = http.createServer(app);
 } else {
   server = https.createServer(
     {
