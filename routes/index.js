@@ -2,19 +2,19 @@ var _ = require("lodash");
 var https = require("https");
 var request = require("request");
 
-exports.index = function(req, res) {
+exports.index = function (req, res) {
   req.session.redirect = "/";
 
   res.render("index", {
     activeClass: "home",
     data: {
-      resource: ""
+      resource: "",
     },
-    user: req.userObj
+    user: req.userObj,
   });
 };
 
-exports.console = function(req, res) {
+exports.console = function (req, res) {
   var userObj = {},
     resource = req.params.resource,
     subresource = req.params.subresource,
@@ -26,30 +26,30 @@ exports.console = function(req, res) {
     user: req.userObj,
     data: {
       resource: resource,
-      subresource: subresource
-    }
+      subresource: subresource,
+    },
   });
 };
 
-exports.getData = function(req, res) {
+exports.getData = function (req, res) {
   var yf = req.app.yf,
     resource = req.params.resource,
     subresource = req.params.subresource,
     query = req.query;
 
-  if (!req.user) {
-    return res.json(
-      {
-        error: "You must log in in order to request data"
-      },
-      401
-    );
-  }
+  // if (!req.user) {
+  //   return res.json(
+  //     {
+  //       error: "You must log in in order to request data"
+  //     },
+  //     401
+  //   );
+  // }
 
   // make sure that user token is set (in case of server restart)
-  yf.setUserToken(req.user.accessToken);
+  // yf.setUserToken(req.user.accessToken);
 
-  Object.map = function(obj) {
+  Object.map = function (obj) {
     var key,
       arr = [];
     for (key in obj) {
@@ -61,9 +61,8 @@ exports.getData = function(req, res) {
   var args = Object.map(query);
 
   var callback = function callback(err, data) {
-    console.profileEnd(`${resource}-${subresource}`);
+    // console.profileEnd(`${resource}-${subresource}`);
     if (err) {
-      console.log("ERR", err);
       var reason = err.description;
       // .match(/"(.*?)"/)
       // .shift();
@@ -79,11 +78,11 @@ exports.getData = function(req, res) {
               process.env.APP_SECRET || require("../conf.js").APP_SECRET,
             redirect_uri: "oob",
             refresh_token: req.user.refreshToken,
-            grant_type: "refresh_token"
-          }
+            grant_type: "refresh_token",
+          },
         };
 
-        request(options, function(error, response, body) {
+        request(options, function (error, response, body) {
           if (error) {
             res.json({ error: "Couldn't renew token..." });
           }
@@ -125,6 +124,12 @@ exports.getData = function(req, res) {
   // 1 - callback only...
 
   console.log(resource, subresource, args);
-  console.profile(`${resource}-${subresource}`);
+  // console.profile(`${resource}-${subresource}`);
   yf[resource][subresource].apply(yf[resource], args);
 };
+
+// process.on("unhandledRejection", (reason, p) => {
+//   console.log("Unhandled Rejection at: Promise", p, "reason:", reason);
+//   console.log(reason);
+//   // application specific logging, throwing an error, or other logic here
+// });

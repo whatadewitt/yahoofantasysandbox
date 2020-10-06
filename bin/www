@@ -32,7 +32,7 @@ if (process.env.IS_HEROKU) {
   server = https.createServer(
     {
       key: fs.readFileSync(path.resolve(__dirname, "../security/cert.key")),
-      cert: fs.readFileSync(path.resolve(__dirname, "../security/cert.pem"))
+      cert: fs.readFileSync(path.resolve(__dirname, "../security/cert.pem")),
     },
     app
   );
