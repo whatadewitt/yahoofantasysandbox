@@ -131,10 +131,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.disable("view cache");
 
-app.get("/", checkAuth, routes.index);
-app.get("/resource/:resource/:subresource", checkAuth, routes.console);
-app.get("/collection/:resource/:subresource", checkAuth, routes.console);
-app.get("/data/:resource/:subresource", routes.getData);
+app.get("*", (req, res) => {
+  res.redirect(301, "https://yahoo-fantasy-node-docs.vercel.app/");
+});
+// app.get("/", checkAuth, routes.index);
+// app.get("/resource/:resource/:subresource", checkAuth, routes.console);
+// app.get("/collection/:resource/:subresource", checkAuth, routes.console);
+// app.get("/data/:resource/:subresource", routes.getData);
 
 app.get(
   "/auth/yahoo",
