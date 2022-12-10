@@ -10,11 +10,11 @@
     "node": "8.x.x"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "connect-redis": "^3.3.3",
     "cookie-parser": "~1.4.3",
     "debug": "^4.1.1",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "express-session": "^1.15.6",
     "lodash": "^4.17.19",
     "morgan": "^1.9.1",
